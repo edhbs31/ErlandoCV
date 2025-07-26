@@ -1,0 +1,178 @@
+.aboutme-page {
+  font-family: Arial, sans-serif;
+  position: relative;
+  color: #333;
+  padding-bottom: 40px;
+}
+
+.experience-background,
+.why-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-size: cover;
+  z-index: -1;
+  filter: blur(4px) brightness(0.5);
+}
+
+.main-container {
+  padding-top: 120px;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+/* Top Section: Flex layout for AboutMe and Education */
+.top-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  flex-wrap: nowrap;
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+/* Card base style */
+.card {
+  background-color: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+  box-sizing: border-box;
+}
+
+/* Section A + B */
+.aboutme-card,
+.education-card {
+  flex: 0 0 48%;
+  max-width: 48%;
+  min-width: 300px;
+  width: calc(50% - 1rem);
+}
+
+/* Section C: Reach Me card */
+.reachme-card {
+  width: 100%;
+  max-width: 100%;
+  margin-top: 2rem;
+  text-align: center;
+}
+
+/* Profile Photo */
+.profile-image {
+  width: 200px;
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 12px;
+  border: 3px solid #aaa;
+  margin: 0 auto 20px auto;
+}
+
+/* About Me */
+.aboutme-content .name {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.aboutme-content p {
+  margin: 6px 0;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.aboutme-content .motto {
+  margin-top: 10px;
+  font-style: italic;
+  color: #555;
+  text-align: center;
+}
+
+/* Education */
+.education-card h2 {
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.edu-entry {
+  display: flex;
+  margin-top: 1rem;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.edu-icon {
+  width: 60px;
+  height: 60px;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.edu-text h3 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.edu-text p {
+  margin: 2px 0;
+  font-size: 0.95rem;
+}
+
+/* Reach Me Section */
+.reachme-card h2 {
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+}
+
+.reachme-card ul {
+  list-style: none;
+  padding: 0;
+  font-size: 1.1rem;
+  margin: 0 auto;
+  max-width: 300px;
+  text-align: left;
+}
+
+.reachme-card li {
+  margin-bottom: 0.5rem;
+}
+
+.reachme-card a {
+  text-decoration: none;
+  color: #0073e6;
+}
+
+.reachme-card a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive Layout */
+@media (max-width: 768px) {
+  .top-section {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .aboutme-card,
+  .education-card,
+  .reachme-card {
+    width: 100%;
+    max-width: 100%;
+    margin-top: 1.5rem;
+  }
+
+  .profile-image {
+    width: 150px;
+    height: 150px;
+  }
+
+  .reachme-card ul {
+    text-align: center;
+  }
+}
