@@ -2,16 +2,19 @@ import React from "react";
 import Navbar from "../components/Navbar";
 import "../assets/css/AboutMe.css";
 import backgroundImage from "../assets/background.JPG";
+import pp from "../assets/pp.jpg"
 import { FaEnvelope, FaWhatsapp, FaLinkedin, FaGithub, FaInstagram, FaFacebook } from "react-icons/fa";
+import { FaMapMarkerAlt, FaBirthdayCake, FaLaptopCode, FaLanguage } from "react-icons/fa";
+import ukdw from "../assets/ukdw.png"
+import umn from "../assets/umn.png"
 
 
 const AboutMe = () => {
   return (
     <div className="aboutme-page">
-      <div
-              className="experience-background"
-              style={{ backgroundImage: `url(${backgroundImage})` }}
-            ></div>
+      <div className="experience-background"
+        style={{ backgroundImage: `url(${backgroundImage})` }}
+       ></div>
 
       <Navbar />
 
@@ -22,19 +25,18 @@ const AboutMe = () => {
           <div className="card aboutme-card">
             <div
               className="profile-image"
-              style={{ backgroundImage: `url(${backgroundImage})` }}
+              style={{ backgroundImage: `url(${pp})` }}
             ></div>
             <div className="aboutme-content">
               <h1 className="name">Erlando Dominico</h1>
-              <p>📍 Surakarta, Indonesia</p>
-              <p>🎂 27 Years Old</p>
-              <p>💻 Software Developer</p>
-              <p>⏳ 5 Years Experience</p>
-              <p>🛠️ Golang, Node, Java & Python</p>
+              <p><FaMapMarkerAlt /> Surakarta, Indonesia</p>
+                <p><FaBirthdayCake />1998 Guy</p>
+                <p><FaLaptopCode /> Software Developer</p>
+                <p><FaLanguage /> English (TOEFL 533), Bahasa Indonesia</p>
+
               <p className="motto">
                 <i>
-                  "Never Stop Learning and Always Accept Challenges by Doing
-                  the Best"
+                "Driven by technology, guided by strategy <br/> I believe in never stopping the learning journey and turning every challenge into structured execution."
                 </i>
               </p>
             </div>
@@ -47,7 +49,7 @@ const AboutMe = () => {
             <div className="edu-entry">
               <div
                 className="edu-icon"
-                style={{ backgroundImage: `url(${backgroundImage})` }}
+                style={{ backgroundImage: `url(${ukdw})` }}
               ></div>
               <div className="edu-text">
                 <h3>Bachelor of Computer Science (B.Sc.)</h3>
@@ -61,7 +63,7 @@ const AboutMe = () => {
             <div className="edu-entry">
               <div
                 className="edu-icon"
-                style={{ backgroundImage: `url(${backgroundImage})` }}
+                style={{ backgroundImage: `url(${umn})` }}
               ></div>
               <div className="edu-text">
                 <h3>Master of Management Technology (M.M.)</h3>

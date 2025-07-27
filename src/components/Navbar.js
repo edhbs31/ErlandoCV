@@ -1,11 +1,31 @@
-// src/components/Navbar.js
-import React, { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import React, { useState, useEffect, useRef } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import "../assets/css/navbar.css";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { pathname } = useLocation();
+  const canvasRef = useRef(null);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    canvas.width = 120;
+    canvas.height = 32;
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = "#ffffff";
+    ctx.font = "bold 28px Arial";
+    ctx.textBaseline = "top";
+    ctx.fillText("EDHBS", 0, 0);
+  }, []);
+
+  const handleLogoClick = () => {
+    setIsOpen(false);        // close menu if open (optional)
+    navigate("/home");       // redirect to /home
+  };
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -25,7 +45,13 @@ const Navbar = () => {
 
   return (
     <nav className="navbar">
-      <div className="navbar-logo">Erlando</div>
+      <div className="navbar-logo">
+        <canvas
+          ref={canvasRef}
+          onClick={handleLogoClick}
+          style={{ cursor: "pointer" }}
+        ></canvas>
+      </div>
 
       <div
         className={`navbar-toggle ${isOpen ? "open" : ""}`}
@@ -39,13 +65,13 @@ const Navbar = () => {
       <ul className={`navbar-links ${isOpen ? "active" : ""}`}>
         {navLinks.map((link) => (
           <li key={link.path}>
-            <Link
-              to={link.path}
+            <a
+              href={link.path}
               className={pathname === link.path ? "active" : ""}
               onClick={closeMenu}
             >
               {link.label}
-            </Link>
+            </a>
           </li>
         ))}
       </ul>

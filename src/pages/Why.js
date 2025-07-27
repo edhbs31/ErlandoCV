@@ -1,82 +1,134 @@
 import React, { useState } from "react";
-import "../assets/css/home.css"; // shared background blur
 import "../assets/css/why.css"; // why-specific styles
 import Navbar from "../components/Navbar";
 import backgroundImage from "../assets/background.JPG";
-//import { useNavigate } from "react-router-dom";
 
+import {
+  FaBriefcase,
+  FaChartBar,
+  FaRocket,
+  FaPuzzlePiece,
+  FaBrain,
+  FaCubes,
+  FaProjectDiagram,
+  FaCompass,
+  FaSearch,
+  FaPaintBrush,
+} from "react-icons/fa";
 const features = [
   {
     id: 1,
     title: "5+ Years of Enterprise Experience",
-    icon: "💼",
-    detail:
-      "Worked across international teams and large-scale enterprise environments. Started career at Mayora, handling SAP FI systems and integrating cross-department workflows.",
+    icon: <FaBriefcase />,
+    detail: `
+✅ Over 5 years of experience in both enterprise and startup environments.  
+✅ Started at Mayora, handling SAP FI and Java apps for hundreds of branches.  
+✅ Worked at a Golang-based B2C eBook startup with clean architecture and fast iteration.  
+✅ Currently building scalable microservices at an international insurance firm.  
+✅ Skilled in cross-functional, global team collaboration.`,
   },
   {
     id: 2,
     title: "Project Management Expert",
-    icon: "📊",
-    detail:
-      "MBA graduate with hands-on leadership in agile, scrum, sprint planning, and leading digital transformation projects from initiation to delivery.",
+    icon: <FaChartBar />,
+    detail: `
+✅ MBA graduate with a solid understanding of business processes.  
+✅ Leads projects using Agile and Scrum methodologies.  
+✅ Experienced in sprint planning and cross-department coordination.  
+✅ Oversees projects from initiation to delivery.  
+✅ Adept at stakeholder communication and risk management.`,
   },
   {
     id: 3,
     title: "Lean Startup Oriented",
-    icon: "🚀",
-    detail:
-      "Expert in aligning IT solutions with real business needs through Lean Startup methodologies. Build MVPs fast and iterate with user feedback.",
+    icon: <FaRocket />,
+    detail: `
+✅ Applies Lean Startup principles for fast, iterative development.  
+✅ Builds MVPs quickly based on real user feedback.  
+✅ Reduces waste and maximizes customer value.  
+✅ Aligns product development closely with business needs.  
+✅ Promotes innovation through experimentation.`,
   },
   {
     id: 4,
     title: "Full-Stack Engineer",
-    icon: "🧩",
-    detail:
-      "Can manage full development lifecycle—from UI/UX, frontend (React/Vue), backend (Node/Java), database (Mongo/Postgres), to DevOps (Docker, CI/CD).",
+    icon: <FaPuzzlePiece />,
+    detail: `
+✅ Experienced in frontend (React, Vue)   
+✅ Experienced in backend (Node, Go, Java and ABAP) 
+✅ Skilled in database design with MongoDB and PostgreSQL.  
+✅ Builds and maintains CI/CD pipelines.  
+✅ Works across the full development lifecycle.  
+✅ Proficient with Docker, K8S, Git, and modern DevOps tools.`,
   },
   {
     id: 5,
     title: "Polyglot Developer",
-    icon: "🧠",
-    detail:
-      "Fluent in multiple languages: Go, Java, JavaScript, Python, SQL, and ABAP. Can choose the right tool for every project.",
+    icon: <FaBrain />,
+    detail: `
+✅ Writes clean code in Go, Java, JavaScript, Python, SQL, and ABAP.  
+✅ Understands strengths of each language and when to use them.  
+✅ Flexible in adapting to new tech stacks and tools.  
+✅ Bridges legacy systems with modern frameworks.  
+✅ Applies best practices across languages.`,
   },
   {
     id: 6,
     title: "Object-Oriented Thinker",
-    icon: "🧱",
-    detail:
-      "Deep understanding of Object-Oriented Programming and software design principles (SOLID, clean architecture, reusable components).",
+    icon: <FaCubes />,
+    detail: `
+✅ Deep knowledge of OOP principles and patterns.  
+✅ Follows SOLID principles in software design.  
+✅ Builds reusable, maintainable components.  
+✅ Practices clean architecture across services.  
+✅ Comfortable with domain-driven design.`,
   },
   {
     id: 7,
     title: "Clean And Scalable Microservices Design",
-    icon: "🧬",
-    detail:
-      "Deep understanding of  System Design for Microservices.",
+    icon: <FaProjectDiagram />,
+    detail: `
+✅ Designs scalable and modular microservices.  
+✅ Implements best practices in service orchestration.  
+✅ Understands service boundaries and responsibilities.  
+✅ Focused on decoupled and high-availability systems.  
+✅ Prioritizes observability and performance.`,
   },
-{
-  id: 8,
-  title: "Strategic IT Planner",
-  icon: "🧭",
-  detail:
-    "Experienced in shaping IT strategy—from setting up Agile processes and automating workflows to implementing robust disaster recovery plans. Ensures alignment between tech execution and business goals.",
-},
-{
-  id: 9,
-  title: "Real-World Problem Solver",
-  icon: "🔍",
-  detail:
-    "Successfully led automation and digital transformation projects in both startup and enterprise settings. Known for bridging business logic with tech execution effectively.",
-},
-{
-  id: 10,
-  title: "Strong UI/UX Sensibility",
-  icon: "🎨",
-  detail:
-    "Designs that aren’t just functional, but intuitive and user-centered. Experienced in crafting seamless user journeys using modern design tools and responsive frontends.",
-},
+  {
+    id: 8,
+    title: "Strategic IT Planner",
+    icon: <FaCompass />,
+    detail: `
+✅ Shapes IT strategy aligned with business goals.  
+✅ Implements Agile processes and automates workflows.  
+✅ Designs disaster recovery and business continuity plans.  
+✅ Applies security best practices and compliance awareness.  
+✅ Leverages AI and automation for faster, smarter development.`,
+  },
+  {
+    id: 9,
+    title: "Real-World Problem Solver",
+    icon: <FaSearch />,
+    detail: `
+✅ Tackles business problems with practical tech solutions.  
+✅ Led digital transformation in both startups and enterprises.  
+✅ Effective in bridging communication between tech and business.  
+✅ Automates tedious manual processes with smart systems.  
+✅ Focuses on measurable impact and value delivery.`,
+  },
+  {
+    id: 10,
+    title: "Strong UI/UX Sensibility",
+    icon: <FaPaintBrush />,
+    detail: `
+✅ Designs user interfaces that are intuitive and elegant.  
+✅ Skilled in responsive layout and cross-device compatibility.  
+✅ User Centered Design 
+✅ Focused on accessibility and usability.  
+✅ Balances aesthetics with functionality.`,
+  },
 ];
+
 
 const Why = () => {
   const [activeFeature, setActiveFeature] = useState(null);

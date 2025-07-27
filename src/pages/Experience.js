@@ -1,15 +1,18 @@
-import React, { useState } from "react";
+import  { useState } from "react";
 import "../assets/css/home.css";
 import "../assets/css/Experience.css";
 import Navbar from "../components/Navbar";
-import backgroundImage from "../assets/background.JPG"; // used as placeholder logo
+import backgroundImage from "../assets/background.JPG";
+import Mayora from "../assets/mayora.png"
+import Gramedia from "../assets/gramedia.png"
+import HMI from "../assets/hmi.png"
 
 const experiences = [
   {
     company: "Mayora Indah",
     year: "2020 - 2022",
     role: "Java Developer & SAP Abaper",
-    logo: backgroundImage,
+    logo: Mayora,
     details: [
       "Develop Tax Numbering Program",
       "Develop Credit Memo Program",
@@ -26,7 +29,7 @@ const experiences = [
     company: "Gramedia Digital",
     year: "2023",
     role: "B2C & B2B Developer",
-    logo: backgroundImage,
+    logo: Gramedia,
     details: [
       "Clean Code Architecture",
       "Integrate Apple Pay using SHA256 and AES256",
@@ -40,10 +43,10 @@ const experiences = [
     ]
   },
   {
-    company: "MHC HMI Singapore",
+    company: "MHC HMI Asia Group Singapore",
     year: "2024 - Now",
-    role: "MERN Stack Developer",
-    logo: backgroundImage,
+    role: "Software Engineer",
+    logo: HMI,
     details: [
       "Handle Payment, Claim, Data Migration Microservices",
       "Data Transformation: Raw to Formatted",
@@ -55,7 +58,8 @@ const experiences = [
       "Jenkins Setup",
       "Code Quality with SonarQube",
       "Serverless with AWS Lambda",
-      "Process Manager (PM2) and Webpack"
+      "Docker Container",
+      "Kubernates Orchestration",
     ]
   }
 ];

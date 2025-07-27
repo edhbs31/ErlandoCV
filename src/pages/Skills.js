@@ -12,50 +12,65 @@ import {
   FaDocker,
   FaLinux,
   FaJenkins,
-  FaDatabase,
   FaNetworkWired,
-  FaServer
+  FaPython,
+  FaGithub,
+  FaDatabase
 } from 'react-icons/fa';
 
 import {
   SiGo,
   SiTypescript,
   SiPostgresql,
+  SiApachekafka,
   SiMongodb,
   SiOracle,
   SiMysql,
   SiKubernetes,
   SiRabbitmq,
   SiNewrelic,
-  SiSap
+  SiSap,
+  SiFlask,
+  SiElasticsearch,
+  SiNginx,
+  SiBootstrap,
+  SiWasmcloud,
+  SiAngular,
+  SiRedis
 } from 'react-icons/si';
 
+import {RiTokenSwapLine} from  'react-icons/ri';
+
+import { SiSelenium, SiJest, SiCucumber } from "react-icons/si";
+import { TbBrandKotlin } from "react-icons/tb"; 
 const skillsData = [
   {
     category: 'Front End Engineer',
     skills: [
       { name: 'Vue.js', icon: <FaVuejs /> },
       { name: 'React.js', icon: <FaReact /> },
-      { name: 'Bootstrap', icon: <FaReact /> },
-      { name: 'Angular', icon: <FaReact /> },
+      { name: 'Bootstrap', icon: <SiBootstrap /> },
+      { name: 'Angular', icon: <SiAngular /> },
     ]
   },
   {
-    category: 'Back End Engineer',
-    skills: [
-      { name: 'Go', icon: <SiGo /> },
-      { name: 'Node.js', icon: <FaNodeJs /> },
-      { name: 'Java', icon: <FaJava /> },
-      { name: 'TypeScript', icon: <SiTypescript /> },
-      { name: 'SAP ABAP', icon: <SiSap /> },
-    ]
-  },
+  category: 'Back End Engineer',
+  skills: [
+    { name: 'Go', icon: <SiGo /> },
+    { name: 'Node.js', icon: <FaNodeJs /> },
+    { name: 'Java', icon: <FaJava /> },
+    { name: 'TypeScript', icon: <SiTypescript /> },
+    { name: 'SAP ABAP', icon: <SiSap /> },
+    { name: 'Python', icon: <FaPython /> },
+    { name: 'Flask', icon: <SiFlask /> }
+  ]
+},
   {
     category: 'Database',
     skills: [
       { name: 'MongoDB', icon: <SiMongodb /> },
       { name: 'PostgreSQL', icon: <SiPostgresql /> },
-      { name: 'MSSQL', icon: <FaDatabase /> },
+      { name: 'Microsoft SQL Server', icon: <FaDatabase /> },
       { name: 'Oracle', icon: <SiOracle /> },
       { name: 'MySQL', icon: <SiMysql /> },
     ]
@@ -76,25 +91,39 @@ const skillsData = [
     ]
   },
   {
-    category: 'Distributed Systems & Observability',
-    skills: [
-      { name: 'gRPC & REST API', icon: <FaNetworkWired /> },
-      { name: 'RabbitMQ & Kafka', icon: <SiRabbitmq /> },
-      { name: 'ElasticSearch & New Relic', icon: <SiNewrelic /> },
-      { name: 'Nginx (Load Balancer)', icon: <FaServer /> },
-    ]
-  },
-  {
     category: 'Cloud Computing',
     skills: [
       { name: 'AWS S3', icon: <FaAws /> },
-      { name: 'Azure', icon: <FaAws /> },
+      { name: 'Azure', icon: <SiWasmcloud /> },
     ]
   },
   {
     category: 'Linux Environment',
     skills: [
       { name: 'Linux Command Line', icon: <FaLinux /> }
+    ]
+  },
+  {
+  category: 'Automation Test',
+  skills: [
+    { name: 'Selenium', icon: <SiSelenium /> },
+    { name: 'Jest', icon: <SiJest /> },
+    { name: 'Cucumber', icon: <SiCucumber /> },
+    { name: 'Katalon', icon: <TbBrandKotlin /> }, // Replace if there's an exact icon later
+  ]
+  },
+  {
+    category: 'Other Stacks',
+    skills: [
+      { name: 'GitHub', icon: <FaGithub /> },
+      { name: 'RESTfull API', icon: <FaNetworkWired /> },
+      { name: 'gRPC', icon: <RiTokenSwapLine /> },
+      { name: 'Redis', icon: <SiRedis /> },
+      { name: 'RabbitMQ', icon: <SiRabbitmq /> },
+      { name: 'Kafka', icon: <SiApachekafka /> },
+      { name: 'Elasticsearch', icon: <SiElasticsearch /> },
+      { name: 'New Relic', icon: <SiNewrelic /> },
+      { name: 'Nginx (Load Balancer)', icon: <SiNginx /> },
     ]
   },
 ];
@@ -122,10 +151,9 @@ const Skills = () => {
         style={{ backgroundImage: `url(${backgroundImage})` }}
       ></div>
       <Navbar />
-      <div className="why-container"></div>
-
+  
       <div className="skills-container">
-        <h1 className="skills-title">Skills</h1>
+        <h1 className="skills-title">Skills and Stack</h1>
         <div className="skills-grid">
           {skillsData.map((section, index) => (
             <div

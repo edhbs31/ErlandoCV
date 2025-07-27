@@ -3,7 +3,7 @@
 .skills-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 2rem 1rem;
+  padding: 6rem 1rem 6rem;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: #333;
 }
@@ -33,7 +33,9 @@
   display: grid;
   grid-template-columns: 1fr;
   gap: 2rem;
+  margin-bottom: 3rem; /* Add this */
 }
+
 
 .skills-category {
   background: #f8fafc;
