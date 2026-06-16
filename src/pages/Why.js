@@ -1,189 +1,191 @@
 import React, { useState } from "react";
-import "../assets/css/why.css"; // why-specific styles
+import { Helmet } from "react-helmet";
+import "../assets/css/why.css";
 import Navbar from "../components/Navbar";
 import backgroundImage from "../assets/background.JPG";
 
 import {
   FaBriefcase,
-  FaChartBar,
-  FaRocket,
   FaPuzzlePiece,
-  FaBrain,
-  FaCubes,
   FaProjectDiagram,
-  FaCompass,
-  FaSearch,
-  FaPaintBrush,
+  FaCloud,
+  FaCogs,
+  FaChartLine,
+  FaRobot,
 } from "react-icons/fa";
+
 const features = [
   {
     id: 1,
-    title: "5+ Years of Enterprise Experience",
+    title: "Enterprise & Startup Experience",
     icon: <FaBriefcase />,
-    detail: `
-✅ Over 5 years of experience in both enterprise and startup environments.  
-✅ Started at Mayora, handling SAP FI and Java apps for hundreds of branches.  
-✅ Worked at a Golang-based B2C eBook startup with clean architecture and fast iteration.  
-✅ Currently building scalable microservices at an international insurance firm.  
-✅ Skilled in cross-functional, global team collaboration.`,
+    summary:
+      "Proven experience delivering scalable systems in both structured enterprises and fast-moving startups.",
+    detail: [
+      "5+ years across enterprise (Mayora) and startup environments.",
+      "Handled SAP FI and Java systems supporting hundreds of branches.",
+      "Built Golang-based services in a fast-paced B2C startup.",
+      "Currently developing microservices in an international insurance system.",
+      "Collaborates across global and cross-functional teams.",
+    ],
   },
   {
     id: 2,
-    title: "Project Management Expert",
-    icon: <FaChartBar />,
-    detail: `
-✅ MBA graduate with a solid understanding of business processes.  
-✅ Leads projects using Agile and Scrum methodologies.  
-✅ Experienced in sprint planning and cross-department coordination.  
-✅ Oversees projects from initiation to delivery.  
-✅ Adept at stakeholder communication and risk management.`,
+    title: "Backend & Distributed Systems",
+    icon: <FaProjectDiagram />,
+    summary:
+      "Designs scalable backend systems using microservices, messaging, and high-performance APIs.",
+    detail: [
+      "Builds microservices using Go, Java, and Node.js.",
+      "Implements REST and gRPC APIs.",
+      "Works with Kafka and RabbitMQ for event-driven systems.",
+      "Uses Redis caching and Elasticsearch for performance.",
+      "Focuses on scalability and reliability trade-offs.",
+    ],
   },
   {
     id: 3,
-    title: "Lean Startup Oriented",
-    icon: <FaRocket />,
-    detail: `
-✅ Applies Lean Startup principles for fast, iterative development.  
-✅ Builds MVPs quickly based on real user feedback.  
-✅ Reduces waste and maximizes customer value.  
-✅ Aligns product development closely with business needs.  
-✅ Promotes innovation through experimentation.`,
+    title: "Cloud & Infrastructure",
+    icon: <FaCloud />,
+    summary:
+      "Deploys and manages cloud-native systems with strong focus on scalability and cost-efficiency.",
+    detail: [
+      "Uses AWS, Docker, and Kubernetes for deployment.",
+      "Builds CI/CD pipelines.",
+      "Implements serverless architectures (Lambda).",
+      "Manages Linux and Nginx environments.",
+      "Balances cost, performance, and complexity.",
+    ],
   },
   {
     id: 4,
-    title: "Full-Stack Engineer",
+    title: "Full-Stack Capability",
     icon: <FaPuzzlePiece />,
-    detail: `
-✅ Experienced in frontend (React, Vue)   
-✅ Experienced in backend (Node, Go, Java and ABAP) 
-✅ Skilled in database design with MongoDB and PostgreSQL.  
-✅ Builds and maintains CI/CD pipelines.  
-✅ Works across the full development lifecycle.  
-✅ Proficient with Docker, K8S, Git, and modern DevOps tools.`,
+    summary:
+      "Handles end-to-end development from frontend interfaces to backend systems and data layers.",
+    detail: [
+      "Builds frontend with React and Vue.",
+      "Designs backend APIs and services.",
+      "Works with SQL and NoSQL databases.",
+      "Delivers full-stack solutions independently.",
+    ],
   },
   {
     id: 5,
-    title: "Polyglot Developer",
-    icon: <FaBrain />,
-    detail: `
-✅ Writes clean code in Go, Java, JavaScript, Python, SQL, and ABAP.  
-✅ Understands strengths of each language and when to use them.  
-✅ Flexible in adapting to new tech stacks and tools.  
-✅ Bridges legacy systems with modern frameworks.  
-✅ Applies best practices across languages.`,
+    title: "Engineering Practices",
+    icon: <FaCogs />,
+    summary:
+      "Applies clean architecture and disciplined engineering practices for maintainable systems.",
+    detail: [
+      "Uses SOLID principles and clean architecture.",
+      "Writes testable and maintainable code.",
+      "Implements Jest and Selenium testing.",
+      "Continuously improves code quality.",
+    ],
   },
   {
     id: 6,
-    title: "Object-Oriented Thinker",
-    icon: <FaCubes />,
-    detail: `
-✅ Deep knowledge of OOP principles and patterns.  
-✅ Follows SOLID principles in software design.  
-✅ Builds reusable, maintainable components.  
-✅ Practices clean architecture across services.  
-✅ Comfortable with domain-driven design.`,
+    title: "Business & Execution Awareness",
+    icon: <FaChartLine />,
+    summary:
+      "Understands business context and delivers technical solutions aligned with real outcomes.",
+    detail: [
+      "MBA background with business understanding.",
+      "Works in Agile/Scrum environments.",
+      "Aligns technical work with business goals.",
+      "Communicates effectively with stakeholders.",
+    ],
   },
   {
     id: 7,
-    title: "Clean And Scalable Microservices Design",
-    icon: <FaProjectDiagram />,
-    detail: `
-✅ Designs scalable and modular microservices.  
-✅ Implements best practices in service orchestration.  
-✅ Understands service boundaries and responsibilities.  
-✅ Focused on decoupled and high-availability systems.  
-✅ Prioritizes observability and performance.`,
-  },
-  {
-    id: 8,
-    title: "Strategic IT Planner",
-    icon: <FaCompass />,
-    detail: `
-✅ Shapes IT strategy aligned with business goals.  
-✅ Implements Agile processes and automates workflows.  
-✅ Designs disaster recovery and business continuity plans.  
-✅ Applies security best practices and compliance awareness.  
-✅ Leverages AI and automation for faster, smarter development.`,
-  },
-  {
-    id: 9,
-    title: "Real-World Problem Solver",
-    icon: <FaSearch />,
-    detail: `
-✅ Tackles business problems with practical tech solutions.  
-✅ Led digital transformation in both startups and enterprises.  
-✅ Effective in bridging communication between tech and business.  
-✅ Automates tedious manual processes with smart systems.  
-✅ Focuses on measurable impact and value delivery.`,
-  },
-  {
-    id: 10,
-    title: "Strong UI/UX Sensibility",
-    icon: <FaPaintBrush />,
-    detail: `
-✅ Designs user interfaces that are intuitive and elegant.  
-✅ Skilled in responsive layout and cross-device compatibility.  
-✅ User Centered Design 
-✅ Focused on accessibility and usability.  
-✅ Balances aesthetics with functionality.`,
+    title: "Automation & Efficiency",
+    icon: <FaRobot />,
+    summary:
+      "Automates workflows to eliminate manual processes and improve operational efficiency.",
+    detail: [
+      "Builds automation using n8n and scripts.",
+      "Reduces repetitive manual tasks.",
+      "Focuses on measurable productivity gains.",
+    ],
   },
 ];
 
-
 const Why = () => {
   const [activeFeature, setActiveFeature] = useState(null);
-  const [redirecting] = useState(false);
-  //const navigate = useNavigate();
-
-  // const handleRedirect = () => {
-  //   setRedirecting(true);
-  //   setTimeout(() => {
-  //     navigate("/skills");
-  //   }, 500); // match with fade duration
-  // };
 
   return (
-    <div className={`why-page ${redirecting ? "fade-out" : ""}`}>
-      <div
-        className="why-background"
-        style={{ backgroundImage: `url(${backgroundImage})` }}
-      ></div>
-      <Navbar />
-      <div className="why-container">
-        <h1 className="why-title">Why Must Me?</h1>
-        <div className="card-grid">
-          {features.map((feature) => (
-            <div
-              key={feature.id}
-              className="why-card"
-              onClick={() => setActiveFeature(feature)}
-            >
-              <div className="icon-wrapper">{feature.icon}</div>
-              <div className="card-title">{feature.title}</div>
-            </div>
-          ))}
-        </div>
-      </div>
+    <>
+      <Helmet>
+        <title>Why Hire Erlando Dominico | Software Engineer & IT Consultant</title>
+        <meta name="description" content="Alasan memilih Erlando Dominico: pengalaman enterprise & startup, backend, cloud, automation, dan engineering best practices." />
+      </Helmet>
+      <div className="why-page">
+        <div
+          className="why-background"
+          style={{ backgroundImage: `url(${backgroundImage})` }}
+        />
 
-     <a href="/skills" className="experience-button">
-        What I can Do?
-      </a>
+        <Navbar />
 
-      {activeFeature && (
-        <div className="dialog-overlay" onClick={() => setActiveFeature(null)}>
-          <div className="dialog-panel" onClick={(e) => e.stopPropagation()}>
-            <h2 className="dialog-title">{activeFeature.title}</h2>
-            <p className="dialog-content">{activeFeature.detail}</p>
-            <button
-              className="dialog-button"
-              onClick={() => setActiveFeature(null)}
-            >
-              Close
-            </button>
+        <div className="why-container">
+          <h1 className="why-title">Why I’m Worth Hiring</h1>
+
+          <div className="card-grid">
+            {features.map((feature) => (
+              <div
+                key={feature.id}
+                className="why-card"
+                onClick={() => setActiveFeature(feature)}
+              >
+                <div className="icon-wrapper">{feature.icon}</div>
+
+                <div className="card-title">{feature.title}</div>
+
+                {/* ✅ REAL SUMMARY */}
+                <p className="card-summary">{feature.summary}</p>
+              </div>
+            ))}
           </div>
         </div>
-      )}
-    </div>
+
+        <a href="/skills" className="experience-button">
+          Explore My Skills →
+        </a>
+
+        {/* MODAL */}
+        {activeFeature && (
+          <div
+            className="dialog-overlay"
+            onClick={() => setActiveFeature(null)}
+          >
+            <div
+              className="dialog-panel"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <h2 className="dialog-title">{activeFeature.title}</h2>
+
+              <ul className="dialog-content">
+                {activeFeature.detail.map((item, index) => (
+                  <li
+                    key={index}
+                    style={{ animationDelay: `${index * 0.05}s` }}
+                  >
+                    {item}
+                  </li>
+                ))}
+              </ul>
+
+              <button
+                className="dialog-button"
+                onClick={() => setActiveFeature(null)}
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        )}
+      </div>
+    </>
   );
 };
 

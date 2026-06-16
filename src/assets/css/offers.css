@@ -1,0 +1,120 @@
+.offers-page {
+  position: relative;
+  min-height: 100vh;
+  overflow-x: hidden;
+  color: white;
+}
+
+.offers-background {
+  position: fixed;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  filter: blur(10px) brightness(0.2);
+  z-index: -2;
+}
+
+.offers-container {
+  position: relative;
+  z-index: 2;
+  padding: 7rem 1.5rem 5rem;
+  max-width: 1300px;
+  margin: auto;
+}
+
+.offers-title {
+  font-size: 4rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.offers-subtitle {
+  text-align: center;
+  max-width: 900px;
+  margin: auto;
+  font-size: 1.1rem;
+  color: rgba(255,255,255,0.75);
+  line-height: 1.7;
+  margin-bottom: 4rem;
+}
+
+.offers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+}
+
+.offer-card {
+  background: rgba(0,0,0,0.55);
+  backdrop-filter: blur(12px);
+
+  border: 1px solid rgba(255,255,255,0.08);
+
+  border-radius: 24px;
+
+  padding: 2rem;
+
+  transition: 0.3s ease;
+}
+
+.offer-card:hover {
+  transform: translateY(-6px);
+  border-color: #0d6efd;
+}
+
+.offer-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.offer-card h2 {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+}
+
+.offer-description {
+  color: rgba(255,255,255,0.75);
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+}
+
+.offer-points {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.offer-points li {
+  position: relative;
+  padding-left: 1.4rem;
+  margin-bottom: 0.8rem;
+  color: rgba(255,255,255,0.9);
+  line-height: 1.5;
+}
+
+.offer-points li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #0d6efd;
+}
+
+@media (max-width: 768px) {
+  .offers-title {
+    font-size: 2.8rem;
+    line-height: 1.1;
+  }
+
+  .offers-subtitle {
+    font-size: 1rem;
+  }
+
+  .offers-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .offer-card {
+    padding: 1.5rem;
+  }
+}

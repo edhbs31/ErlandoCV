@@ -1,178 +1,252 @@
+/* =========================
+   BASE
+========================= */
 .aboutme-page {
-  font-family: Arial, sans-serif;
   position: relative;
-  color: #333;
-  padding-bottom: 40px;
+  color: #fff;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding-top: 90px;
 }
 
-.experience-background,
-.why-background {
+/* =========================
+   BACKGROUND
+========================= */
+.experience-background {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-position: center;
+  inset: 0;
   background-size: cover;
+  background-position: center;
+  filter: blur(10px) brightness(0.25);
   z-index: -1;
-  filter: blur(4px) brightness(0.5);
 }
 
+/* =========================
+   CONTAINER
+========================= */
 .main-container {
-  padding-top: 120px;
-  padding-left: 40px;
-  padding-right: 40px;
+  max-width: 1100px;
+  margin: auto;
+  padding: 2rem 1.2rem 4rem;
 }
 
-/* Top Section: Flex layout for AboutMe and Education */
-.top-section {
+/* =========================
+   HERO
+========================= */
+.hero-section {
   display: flex;
-  justify-content: space-between;
-  align-items: stretch;
-  flex-wrap: nowrap;
-  gap: 2rem;
-  margin-bottom: 3rem;
+  align-items: center;
+  gap: 40px;
+  margin-bottom: 60px;
+  animation: fadeUp 0.8s ease;
 }
 
-/* Card base style */
-.card {
-  background-color: white;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
-  box-sizing: border-box;
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-/* Section A + B */
-.aboutme-card,
-.education-card {
-  flex: 0 0 48%;
-  max-width: 48%;
-  min-width: 300px;
-  width: calc(50% - 1rem);
-}
-
-/* Section C: Reach Me card */
-.reachme-card {
-  width: 100%;
-  max-width: 100%;
-  margin-top: 2rem;
-  text-align: center;
-}
-
-/* Profile Photo */
+/* PROFILE */
 .profile-image {
-  width: 200px;
-  height: 200px;
+  width: 150px;
+  height: 150px;
+  border-radius: 20px;
   background-size: cover;
   background-position: center;
-  border-radius: 12px;
-  border: 3px solid #aaa;
-  margin: 0 auto 20px auto;
+  border: 2px solid rgba(255,255,255,0.2);
+  flex-shrink: 0;
 }
 
-/* About Me */
-.aboutme-content .name {
-  font-size: 1.8rem;
-  font-weight: bold;
-  margin-bottom: 1rem;
-  text-align: center;
+/* TEXT */
+.hero-text h1 {
+  font-size: 2.6rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+  background: linear-gradient(90deg, #ffd700, #ff8c00);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-.aboutme-content p {
-  margin: 6px 0;
-  font-size: 1rem;
-  text-align: center;
+.headline {
+  font-size: 1.2rem;
+  margin-bottom: 18px;
+  opacity: 0.9;
 }
 
-.aboutme-content .motto {
-  margin-top: 10px;
-  font-style: italic;
-  color: #555;
-  text-align: center;
+/* META */
+.meta {
+  margin-bottom: 16px;
 }
 
-/* Education */
+.meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+.meta-row.highlight {
+  margin-top: 6px;
+  font-weight: 600;
+  color: #ffd700;
+}
+
+/* SUMMARY */
+.summary {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  opacity: 0.9;
+}
+
+/* =========================
+   TECH STACK
+========================= */
+.tech-stack {
+  margin-top: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.tech-stack span {
+  background: rgba(255,255,255,0.08);
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  transition: 0.2s;
+}
+
+.tech-stack span:hover {
+  background: #ffd700;
+  color: #000;
+}
+
+/* =========================
+   GRID
+========================= */
+.top-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+/* =========================
+   CARD
+========================= */
+.card {
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(14px);
+  padding: 22px;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+  position: relative;
+  overflow: hidden;
+  transition: 0.3s;
+  isolation: isolate;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+}
+
+/* subtle glow */
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,0.12),
+    transparent
+  );
+
+  opacity: 0;
+  transition: 0.4s;
+
+  pointer-events: none; /* IMPORTANT */
+}
+
+.card > * {
+  position: relative;
+  z-index: 2;
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
+/* =========================
+   EDUCATION
+========================= */
 .education-card h2 {
-  font-size: 1.6rem;
-  margin-bottom: 1rem;
-  text-align: center;
+  margin-bottom: 16px;
 }
 
 .edu-entry {
   display: flex;
-  margin-top: 1rem;
-  gap: 1rem;
-  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 14px;
 }
 
 .edu-icon {
-  width: 60px;
-  height: 60px;
+  width: 42px;
+  height: 42px;
   background-size: contain;
-  background-position: center;
   background-repeat: no-repeat;
 }
 
 .edu-text h3 {
-  margin: 0;
-  font-size: 1.1rem;
-}
-
-.edu-text p {
-  margin: 2px 0;
   font-size: 0.95rem;
 }
 
-/* Reach Me Section */
-.reachme-card h2 {
-  font-size: 1.6rem;
-  margin-bottom: 1rem;
+.edu-text p {
+  font-size: 0.85rem;
+  opacity: 0.8;
 }
 
+/* =========================
+   CONTACT
+========================= */
 .reachme-card ul {
   list-style: none;
   padding: 0;
-  font-size: 1.1rem;
-  margin: 0 auto;
-  max-width: 300px;
-  text-align: left;
 }
 
 .reachme-card li {
-  margin-bottom: 0.5rem;
+  margin-bottom: 10px;
 }
 
 .reachme-card a {
+  color: #ddd;
   text-decoration: none;
-  color: #0073e6;
+  display: inline-flex;
+  gap: 8px;
+  transition: 0.2s;
 }
 
 .reachme-card a:hover {
-  text-decoration: underline;
+  color: #ffd700;
+  transform: translateX(4px);
 }
 
-/* Responsive Layout */
-@media (max-width: 768px) {
-  .top-section {
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 900px) {
+  .hero-section {
     flex-direction: column;
-    align-items: center;
-  }
-
-  .aboutme-card,
-  .education-card,
-  .reachme-card {
-    width: 100%;
-    max-width: 100%;
-    margin-top: 1.5rem;
-  }
-
-  .profile-image {
-    width: 150px;
-    height: 150px;
-  }
-
-  .reachme-card ul {
     text-align: center;
+  }
+
+  .top-section {
+    grid-template-columns: 1fr;
   }
 }
