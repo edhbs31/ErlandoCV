@@ -1,81 +1,53 @@
-import React, { useState, useEffect, useRef } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+import { Menu, MoreHorizontal, X } from "lucide-react";
+import { useLocation } from "react-router-dom";
 import "../assets/css/navbar.css";
+
+const mainLinks = [
+  { path: "/home", label: "Home" },
+  { path: "/offers", label: "Services" },
+  { path: "/portfolio", label: "Portfolio" },
+  { path: "/experience", label: "Experience" },
+  { path: "/about", label: "About" },
+];
+
+const moreLinks = [
+  { path: "/why", label: "Why Hire Me" },
+  { path: "/skills", label: "Skills" },
+];
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isMoreOpen, setIsMoreOpen] = useState(false);
   const { pathname } = useLocation();
-  const canvasRef = useRef(null);
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext("2d");
-    canvas.width = 120;
-    canvas.height = 32;
-
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.fillStyle = "#ffffff";
-    ctx.font = "bold 28px Arial";
-    ctx.textBaseline = "top";
-    ctx.fillText("EDHBS", 0, 0);
-  }, []);
-
-  const handleLogoClick = () => {
-    setIsOpen(false);        // close menu if open (optional)
-    navigate("/home");       // redirect to /home
-  };
-
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
-
-  const closeMenu = () => {
-    setIsOpen(false);
-  };
-
-  const navLinks = [
-    { path: "/home", label: "Home" },
-    { path: "/offers", label: "Offers" },
-    { path: "/why", label: "Why Me" },
-    { path: "/skills", label: "Skills" },
-    { path: "/experience", label: "Experience" },
-    { path: "/about", label: "About" },
-  ];
+  const closeMenus = () => { setIsOpen(false); setIsMoreOpen(false); };
+  const isMoreActive = moreLinks.some((link) => link.path === pathname);
 
   return (
-    <nav className="navbar">
-      <div className="navbar-logo">
-        <canvas
-          ref={canvasRef}
-          onClick={handleLogoClick}
-          style={{ cursor: "pointer" }}
-        ></canvas>
-      </div>
+    <nav className="navbar" aria-label="Main navigation">
+      <a href="/home" className="navbar-logo" onClick={closeMenus}>EDHBS<span>.</span></a>
 
-      <div
-        className={`navbar-toggle ${isOpen ? "open" : ""}`}
-        onClick={toggleMenu}
-      >
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
+      <button className="navbar-toggle" aria-label="Toggle navigation" aria-expanded={isOpen} onClick={() => setIsOpen(!isOpen)}>
+        {isOpen ? <X size={22} /> : <Menu size={24} />}
+      </button>
 
-      <ul className={`navbar-links ${isOpen ? "active" : ""}`}>
-        {navLinks.map((link) => (
-          <li key={link.path}>
-            <a
-              href={link.path}
-              className={pathname === link.path ? "active" : ""}
-              onClick={closeMenu}
-            >
-              {link.label}
-            </a>
+      <div className={`navbar-menu ${isOpen ? "active" : ""}`}>
+        <ul className="navbar-links">
+          {mainLinks.map((link) => (
+            <li key={link.path}><a href={link.path} className={pathname === link.path ? "active" : ""} onClick={closeMenus}>{link.label}</a></li>
+          ))}
+          <li className="navbar-more">
+            <button className={isMoreActive ? "active" : ""} onClick={() => setIsMoreOpen(!isMoreOpen)} aria-expanded={isMoreOpen}>
+              More <MoreHorizontal size={17} />
+            </button>
+            <ul className={`more-menu ${isMoreOpen ? "open" : ""}`}>
+              {moreLinks.map((link) => <li key={link.path}><a href={link.path} className={pathname === link.path ? "active" : ""} onClick={closeMenus}>{link.label}</a></li>)}
+            </ul>
           </li>
-        ))}
-      </ul>
+          <li className="mobile-only">{moreLinks.map((link) => <a key={link.path} href={link.path} className={pathname === link.path ? "active" : ""} onClick={closeMenus}>{link.label}</a>)}</li>
+        </ul>
+        <a href="/about#contact" className={`navbar-contact ${pathname === "/about" ? "active" : ""}`} onClick={closeMenus}>Let’s talk</a>
+      </div>
     </nav>
   );
 };

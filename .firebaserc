@@ -1,7 +1,5 @@
 {
   "projects": {
-    "staging": "erlandocv"
-  },
-  "targets": {},
-  "etags": {}
+    "default": "erlandohbs"
+  }
 }

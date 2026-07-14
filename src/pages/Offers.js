@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import { ArrowUpRight, CheckCircle2, Database, Layers3, X } from "lucide-react";
 import { Helmet } from "react-helmet";
 import "../assets/css/offers.css";
 import Navbar from "../components/Navbar";
@@ -6,31 +7,31 @@ import backgroundImage from "../assets/background.JPG";
 
 const offers = [
   {
-    title: "Enterprise Microservices Architecture",
+    title: "Backend & Microservices Engineering",
     icon: "⚙️",
     description:
-      "Designs scalable backend systems using microservices, event-driven architecture, and cloud-native infrastructure.",
+      "Scalable backend platforms, APIs, and distributed services built for performance, reliability, and independent scale.",
     points: [
       "Microservices using Golang, Java, and Node.js",
       "Kafka & RabbitMQ event-driven systems",
       "REST & gRPC APIs",
       "Docker & Kubernetes deployment",
-      "Scalable distributed architecture",
-      "High-performance backend systems",
+      "Database architecture across SQL and NoSQL",
+      "Redis caching and asynchronous processing",
     ],
   },
   {
-    title: "AI & OCR Automation Systems",
+    title: "AI Document & Workflow Automation",
     icon: "🤖",
     description:
-      "Builds AI-powered OCR and workflow automation systems to reduce manual operations and improve processing speed.",
+      "AI-powered document intelligence and automation that reduce manual operations and turn unstructured work into reliable workflows.",
     points: [
       "OCR document extraction pipelines",
       "AI-based validation & classification",
       "Spreadsheet automation systems",
       "Intelligent folder mapping automation",
       "Large-scale file processing workflows",
-      "PDF & image structured data extraction",
+      "n8n workflows and custom internal tools",
     ],
   },
   {
@@ -62,64 +63,25 @@ const offers = [
     ],
   },
   {
-    title: "Backend & API Engineering",
-    icon: "🧩",
-    description:
-      "Develops reliable backend services and APIs focused on scalability, maintainability, and performance.",
-    points: [
-      "REST & gRPC API development",
-      "Database architecture design",
-      "SQL & NoSQL systems",
-      "Redis caching optimization",
-      "Elasticsearch integration",
-      "Scalable asynchronous processing",
-    ],
-  },
-  {
-    title: "Automation & Internal Tools",
-    icon: "🚀",
-    description:
-      "Builds automation tools and internal systems that eliminate repetitive work and improve operational speed.",
-    points: [
-      "n8n workflow automation",
-      "Internal dashboard systems",
-      "File processing automation",
-      "Data synchronization tools",
-      "Custom operational tooling",
-      "Manual process elimination",
-    ],
-  },
-  {
-    title: "Technical Product & System Strategy",
+    title: "Technical Strategy & MVP Development",
     icon: "🧠",
     description:
-      "Bridges business objectives with scalable technical execution for startups and operational teams.",
+      "Technical direction and pragmatic MVP delivery that connect business goals with scalable engineering execution.",
     points: [
       "Technical feasibility analysis",
       "System architecture planning",
       "Workflow & operational optimization",
       "Scalable platform strategy",
       "Automation opportunity assessment",
-      "Technology stack recommendations",
-    ],
-  },
-  {
-    title: "Startup MVP & Automation Development",
-    icon: "🚀",
-    description:
-      "Helps startups rapidly build scalable MVP systems and automate operations without excessive infrastructure overhead.",
-    points: [
       "Rapid MVP backend development",
       "Scalable architecture foundations",
-      "Automation-first operational design",
-      "Cloud-native deployment setup",
-      "AI-assisted workflow integration",
-      "Cost-efficient infrastructure planning",
     ],
   },
 ];
 
 const Offers = () => {
+  const [selectedOffer, setSelectedOffer] = useState(null);
+
   return (
     <>
       <Helmet>
@@ -135,6 +97,7 @@ const Offers = () => {
         />
 
         <div className="offers-container">
+          <p className="offers-eyebrow">Capabilities</p>
           <h1 className="offers-title">What I Offer</h1>
 
           <p className="offers-subtitle">
@@ -144,27 +107,50 @@ const Offers = () => {
 
           <div className="offers-grid">
             {offers.map((offer, index) => (
-              <div className="offer-card" key={index}>
-                <div className="offer-icon">{offer.icon}</div>
-
+              <article className="offer-card" key={index}>
+                <div className="offer-card-top"><div className="offer-icon">{offer.icon}</div><span>0{index + 1}</span></div>
                 <h2>{offer.title}</h2>
-
                 <p className="offer-description">{offer.description}</p>
-
-                <ul className="offer-points">
-                  {offer.points.map((point, i) => (
-                    <li key={i}>{point}</li>
-                  ))}
-                </ul>
-              </div>
+                <button className="offer-details-button" onClick={() => setSelectedOffer(offer)}>
+                  Explore service <ArrowUpRight size={16} />
+                </button>
+              </article>
             ))}
           </div>
         </div>
+
+        <section className="offers-principles">
+          <div className="principles-copy">
+            <p className="section-label">How I deliver</p>
+            <h2>Services built<br />around outcomes.</h2>
+            <p>Every service above is delivered the same way: understand the real problem first, then build the smallest thing that solves it well.</p>
+          </div>
+          <div className="principles-list">
+            <div><Layers3 size={21} /><span><b>Scoped to the problem</b><small>No over-engineering — just the architecture the problem actually needs.</small></span></div>
+            <div><Database size={21} /><span><b>Reliable by default</b><small>Observable flows and dependable source-of-truth systems in every build.</small></span></div>
+            <div><CheckCircle2 size={21} /><span><b>Handover-ready</b><small>Documented, maintainable delivery your team can run without me.</small></span></div>
+          </div>
+        </section>
 
         <a href="/why" className="experience-button">
           Why Work With Me →
         </a>
       </div>
+      {selectedOffer && (
+        <div className="offer-modal-overlay" onClick={() => setSelectedOffer(null)}>
+          <section className="offer-modal" role="dialog" aria-modal="true" aria-labelledby="offer-modal-title" onClick={(event) => event.stopPropagation()}>
+            <button className="offer-modal-close" aria-label="Close service details" onClick={() => setSelectedOffer(null)}><X size={20} /></button>
+            <div className="offer-modal-icon">{selectedOffer.icon}</div>
+            <p>Service overview</p>
+            <h2 id="offer-modal-title">{selectedOffer.title}</h2>
+            <p className="offer-modal-description">{selectedOffer.description}</p>
+            <div className="offer-modal-divider" />
+            <h3>What I can deliver</h3>
+            <ul>{selectedOffer.points.map((point) => <li key={point}><CheckCircle2 size={18} />{point}</li>)}</ul>
+            <a href="/contact" className="offer-modal-contact">Discuss your project <ArrowUpRight size={17} /></a>
+          </section>
+        </div>
+      )}
     </>
   );
 };

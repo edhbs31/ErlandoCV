@@ -60,6 +60,7 @@ const AboutMe = () => {
 
             <div className="hero-text">
               <header>
+                <p className="about-eyebrow">Software engineer · Indonesia</p>
                 <h1>Erlando Dominico</h1>
 
                 <p className="headline">
@@ -73,15 +74,22 @@ const AboutMe = () => {
 
               <div className="meta">
                 <div className="meta-row">
-                  <span>📍 Surakarta, Indonesia</span>
+                  <span>📍Indonesia</span>
                 </div>
               </div>
 
-              <p className="summary">
-                Software engineer focused on building scalable applications,
-                business process automation, and technology solutions that
-                improve operational efficiency and digital adoption.
+              <p className="summary about-lead">
+                Senior Software Engineer with 5+ years of experience building enterprise platforms across healthcare, financial services, and digital commerce.
               </p>
+              <p className="summary">
+                I design distributed systems, modernize legacy applications, and build cloud-native automation. My work includes healthcare claims platforms, H2H banking integrations, and AI-powered document processing with RAG, AI Agents, LLMs, and OCR.
+              </p>
+
+              <div className="impact-grid" aria-label="Career highlights">
+                <div><b>5+ years</b><span>enterprise engineering</span></div>
+                <div><b>5,000+</b><span>daily B2B transactions</span></div>
+                <div><b>AI + Cloud</b><span>automation systems</span></div>
+              </div>
 
               <div className="tech-stack">
                 {[
@@ -97,6 +105,10 @@ const AboutMe = () => {
                 ].map((tech) => (
                   <span key={tech}>{tech}</span>
                 ))}
+              </div>
+              <div className="about-actions">
+                <a href="/portfolio">View portfolio →</a>
+                <a href="mailto:erlandohbs@gmail.com">Contact me</a>
               </div>
             </div>
           </section>
@@ -141,7 +153,7 @@ const AboutMe = () => {
             </article>
 
             {/* CONTACT */}
-            <aside className="card reachme-card">
+            <aside className="card reachme-card" id="contact">
               <h2>Contact</h2>
 
               <ul>

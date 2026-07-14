@@ -8,6 +8,7 @@ import Mayora from "../assets/mayora.png";
 import Gramedia from "../assets/gramedia.png";
 import HMI from "../assets/hmi.png";
 import Freelance from "../assets/freelance.png";  
+import { ArrowUpRight, CalendarDays, X, Layers3, Database, CheckCircle2 } from "lucide-react";
 
 const experiences = [
   {
@@ -105,18 +106,25 @@ const Experience = () => {
         style={{ backgroundImage: `url(${backgroundImage})` }}
       />
 
+      <div className="experience-container">
+        <header className="experience-heading">
+          <p>Career journey</p>
+          <h1>Experience that<br /><span>ships.</span></h1>
+          <p className="experience-intro">A selection of roles across enterprise systems, digital products, and AI-powered automation. Open a role to explore its delivery highlights.</p>
+        </header>
       <div className="timeline">
         {experiences.map((exp, index) => (
-          <div key={index} className="timeline-entry">
+          <article key={index} className="timeline-entry">
             <div className="timeline-dot" />
             <div className="timeline-line" />
+            <span className="roadmap-step">{String(index + 1).padStart(2, "0")}</span>
 
             <div className="entry-content">
               <img src={exp.logo} alt="logo" className="company-logo" />
 
               <div className="entry-text">
                 <h3>{exp.company}</h3>
-                <p className="date">{exp.year}</p>
+                <p className="date"><CalendarDays size={14} /> {exp.year}</p>
                 <p className="role">{exp.role}</p>
 
                 {/* 🔥 KEY CHANGE */}
@@ -126,30 +134,47 @@ const Experience = () => {
                   onClick={() =>
                     setActiveIndex(index === activeIndex ? null : index)
                   }
+                  aria-expanded={activeIndex === index}
+                  aria-controls={`experience-details-${index}`}
                 >
-                  {activeIndex === index ? "Hide Details" : "View Details"}
+                  {activeIndex === index ? "Close highlights" : "View highlights"} <ArrowUpRight size={16} />
                 </button>
               </div>
             </div>
-          </div>
+          </article>
         ))}
-      </div>
+      </div></div>
+
+      <section className="experience-principles">
+        <div className="principles-copy">
+          <p className="section-label">What experience taught me</p>
+          <h2>Range that<br />reduces risk.</h2>
+          <p>Enterprise, startup, and freelance work each expose different failure modes — that range is what lets me spot risk earlier and ship with fewer surprises.</p>
+        </div>
+        <div className="principles-list">
+          <div><Layers3 size={21} /><span><b>Adapts to the environment</b><small>Structured enterprise process one year, fast-moving startup delivery the next.</small></span></div>
+          <div><Database size={21} /><span><b>Handles the full lifecycle</b><small>From legacy SAP systems to greenfield microservices and AI automation.</small></span></div>
+          <div><CheckCircle2 size={21} /><span><b>Delivers under real constraints</b><small>Track record of shipping at scale, not just in theory.</small></span></div>
+        </div>
+      </section>
 
       {/* MODAL */}
       {activeIndex !== null && (
-        <div className="popup-overlay" onClick={() => setActiveIndex(null)}>
-          <div className="popup-card" onClick={(e) => e.stopPropagation()}>
-            <button className="close-icon" onClick={() => setActiveIndex(null)}>
-              ×
+        <div className="experience-popup-overlay" onClick={() => setActiveIndex(null)}>
+          <div className="experience-popup-card" id={`experience-details-${activeIndex}`} role="dialog" aria-modal="true" aria-labelledby="experience-modal-title" onClick={(e) => e.stopPropagation()}>
+            <button className="close-icon" aria-label="Close experience highlights" onClick={() => setActiveIndex(null)}>
+              <X size={20} />
             </button>
 
             <div className="popup-header">
               <img
                 src={experiences[activeIndex].logo}
+                alt={`${experiences[activeIndex].company} logo`}
                 className="popup-logo"
               />
               <div>
-                <h2>{experiences[activeIndex].company}</h2>
+                <p className="popup-eyebrow">Selected contribution</p>
+                <h2 id="experience-modal-title">{experiences[activeIndex].company}</h2>
                 <p>{experiences[activeIndex].role}</p>
                 <span>{experiences[activeIndex].year}</span>
               </div>
@@ -157,6 +182,7 @@ const Experience = () => {
 
             <div className="popup-divider" />
 
+            <p className="popup-section-title">Delivery highlights</p>
             <ul className="popup-list">
               {experiences[activeIndex].details.map((item, i) => (
                 <li
@@ -168,6 +194,7 @@ const Experience = () => {
                 </li>
               ))}
             </ul>
+            <button className="popup-close-button" onClick={() => setActiveIndex(null)}>Close</button>
           </div>
         </div>
       )}

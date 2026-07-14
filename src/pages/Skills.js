@@ -20,20 +20,25 @@ import {
 import { RiTokenSwapLine } from "react-icons/ri";
 import { SiSelenium, SiJest, SiCucumber } from "react-icons/si";
 import { TbBrandKotlin } from "react-icons/tb";
+import { Layers3, Database, CheckCircle2 } from "lucide-react";
 
 const skillsData = [
   {
-    category: "Core Languages",
+    category: "Backend & Core Engineering",
     skills: [
       { name: "Java", icon: <FaJava /> },
       { name: "Go", icon: <SiGo /> },
       { name: "TypeScript", icon: <SiTypescript /> },
       { name: "Python", icon: <FaPython /> },
       { name: "SAP ABAP", icon: <SiSap /> },
+      { name: "Node.js", icon: <FaNodeJs /> },
+      { name: "Flask", icon: <SiFlask /> },
+      { name: "REST API", icon: <FaNetworkWired /> },
+      { name: "gRPC", icon: <RiTokenSwapLine /> },
     ],
   },
   {
-    category: "Frontend",
+    category: "Product & Web Interfaces",
     skills: [
       { name: "React.js", icon: <FaReact /> },
       { name: "Vue.js", icon: <FaVuejs /> },
@@ -42,16 +47,7 @@ const skillsData = [
     ],
   },
   {
-    category: "Backend & APIs",
-    skills: [
-      { name: "Node.js", icon: <FaNodeJs /> },
-      { name: "Flask", icon: <SiFlask /> },
-      { name: "REST API", icon: <FaNetworkWired /> },
-      { name: "gRPC", icon: <RiTokenSwapLine /> },
-    ],
-  },
-  {
-    category: "Data & Storage",
+    category: "Data, Messaging & Storage",
     skills: [
       { name: "PostgreSQL", icon: <SiPostgresql /> },
       { name: "MySQL", icon: <SiMysql /> },
@@ -61,10 +57,12 @@ const skillsData = [
       { name: "DynamoDB", icon: <FaAws /> },
       { name: "Redis", icon: <SiRedis /> },
       { name: "Elasticsearch", icon: <SiElasticsearch /> },
+      { name: "RabbitMQ", icon: <SiRabbitmq /> },
+      { name: "Kafka", icon: <SiApachekafka /> },
     ],
   },
   {
-    category: "Cloud & Infrastructure",
+    category: "Cloud, DevOps & Observability",
     skills: [
       { name: "AWS", icon: <FaAws /> },
       { name: "AWS Lambda", icon: <FaAws /> },
@@ -72,35 +70,18 @@ const skillsData = [
       { name: "Kubernetes", icon: <SiKubernetes /> },
       { name: "Linux", icon: <FaLinux /> },
       { name: "Nginx", icon: <SiNginx /> },
-    ],
-  },
-  {
-    category: "Messaging & Streaming",
-    skills: [
-      { name: "RabbitMQ", icon: <SiRabbitmq /> },
-      { name: "Kafka", icon: <SiApachekafka /> },
-    ],
-  },
-  {
-    category: "DevOps & Observability",
-    skills: [
       { name: "Jenkins", icon: <FaJenkins /> },
       { name: "New Relic", icon: <SiNewrelic /> },
       { name: "GitHub", icon: <FaGithub /> },
     ],
   },
   {
-    category: "Automation & Testing",
+    category: "Quality & AI Automation",
     skills: [
       { name: "Selenium", icon: <SiSelenium /> },
       { name: "Jest", icon: <SiJest /> },
       { name: "Cucumber", icon: <SiCucumber /> },
       { name: "Katalon", icon: <TbBrandKotlin /> },
-    ],
-  },
-  {
-    category: "Workflow & AI Automation",
-    skills: [
       { name: "n8n", icon: <SiN8N /> },
     ],
   },
@@ -129,6 +110,7 @@ const Skills = () => {
 
         <div className="skills-container">
           <h1 className="skills-title">Tech Stack</h1>
+          <p className="skills-subtitle">The tools I use to build reliable systems, automation, and cloud-native products.</p>
 
           <div className="skills-grid">
             {skillsData.map((section, index) => (
@@ -158,11 +140,11 @@ const Skills = () => {
           {/* POPUP */}
           {activeCategory && (
             <div
-              className="popup-overlay"
+              className="skills-popup-overlay"
               onClick={() => setActiveCategory(null)}
             >
               <div
-                className="popup-card"
+                className="skills-popup-card"
                 onClick={(e) => e.stopPropagation()}
               >
                 <h3>{activeCategory}</h3>
@@ -185,6 +167,19 @@ const Skills = () => {
             </div>
           )}
         </div>
+
+        <section className="skills-principles">
+          <div className="principles-copy">
+            <p className="section-label">How I build skills</p>
+            <h2>Depth over<br />buzzwords.</h2>
+            <p>Every tool above earns its place through real use — not a checklist. I go deep enough to know when it fits, and when it doesn't.</p>
+          </div>
+          <div className="principles-list">
+            <div><Layers3 size={21} /><span><b>Learned by shipping</b><small>Skills sharpened on production systems, not tutorials.</small></span></div>
+            <div><Database size={21} /><span><b>Right tool, right job</b><small>Chosen for the problem's constraints, not what's trendy.</small></span></div>
+            <div><CheckCircle2 size={21} /><span><b>Kept current</b><small>Continuously updated as tools, patterns, and demands evolve.</small></span></div>
+          </div>
+        </section>
 
         <a href="/experience" className="experience-button">
           View Experience →

@@ -6,13 +6,12 @@ import backgroundImage from "../assets/background.JPG";
 
 import {
   FaBriefcase,
-  FaPuzzlePiece,
   FaProjectDiagram,
   FaCloud,
-  FaCogs,
   FaChartLine,
   FaRobot,
 } from "react-icons/fa";
+import { ArrowUpRight, Layers3, Database, CheckCircle2 } from "lucide-react";
 
 const features = [
   {
@@ -45,67 +44,46 @@ const features = [
   },
   {
     id: 3,
-    title: "Cloud & Infrastructure",
+    title: "Cloud-Native Engineering",
     icon: <FaCloud />,
     summary:
-      "Deploys and manages cloud-native systems with strong focus on scalability and cost-efficiency.",
+      "Delivers cloud-native systems with disciplined architecture, automated delivery, and dependable operations.",
     detail: [
       "Uses AWS, Docker, and Kubernetes for deployment.",
       "Builds CI/CD pipelines.",
       "Implements serverless architectures (Lambda).",
       "Manages Linux and Nginx environments.",
       "Balances cost, performance, and complexity.",
+      "Applies SOLID principles and clean architecture.",
+      "Builds testable, maintainable systems with quality checks.",
     ],
   },
   {
     id: 4,
-    title: "Full-Stack Capability",
-    icon: <FaPuzzlePiece />,
+    title: "AI & Automation",
+    icon: <FaRobot />,
     summary:
-      "Handles end-to-end development from frontend interfaces to backend systems and data layers.",
+      "Automates workflows and repetitive operations with AI-assisted systems, n8n, and pragmatic integrations.",
     detail: [
-      "Builds frontend with React and Vue.",
-      "Designs backend APIs and services.",
-      "Works with SQL and NoSQL databases.",
-      "Delivers full-stack solutions independently.",
+      "Builds automation using n8n and scripts.",
+      "Reduces repetitive manual tasks.",
+      "Builds OCR and document-processing workflows.",
+      "Focuses on measurable productivity gains.",
     ],
   },
   {
     id: 5,
-    title: "Engineering Practices",
-    icon: <FaCogs />,
-    summary:
-      "Applies clean architecture and disciplined engineering practices for maintainable systems.",
-    detail: [
-      "Uses SOLID principles and clean architecture.",
-      "Writes testable and maintainable code.",
-      "Implements Jest and Selenium testing.",
-      "Continuously improves code quality.",
-    ],
-  },
-  {
-    id: 6,
-    title: "Business & Execution Awareness",
+    title: "Business-Aware Technical Execution",
     icon: <FaChartLine />,
     summary:
-      "Understands business context and delivers technical solutions aligned with real outcomes.",
+      "Connects product needs, technical execution, and operational outcomes across the full delivery lifecycle.",
     detail: [
       "MBA background with business understanding.",
       "Works in Agile/Scrum environments.",
       "Aligns technical work with business goals.",
       "Communicates effectively with stakeholders.",
-    ],
-  },
-  {
-    id: 7,
-    title: "Automation & Efficiency",
-    icon: <FaRobot />,
-    summary:
-      "Automates workflows to eliminate manual processes and improve operational efficiency.",
-    detail: [
-      "Builds automation using n8n and scripts.",
-      "Reduces repetitive manual tasks.",
-      "Focuses on measurable productivity gains.",
+      "Builds frontend with React and Vue when needed.",
+      "Designs backend APIs, data layers, and integrations end to end.",
     ],
   },
 ];
@@ -128,25 +106,39 @@ const Why = () => {
         <Navbar />
 
         <div className="why-container">
-          <h1 className="why-title">Why I’m Worth Hiring</h1>
+          <p className="why-eyebrow">Why work with me</p>
+          <h1 className="why-title">Why Teams Choose Me</h1>
 
           <div className="card-grid">
             {features.map((feature) => (
-              <div
+              <article
                 key={feature.id}
                 className="why-card"
-                onClick={() => setActiveFeature(feature)}
               >
-                <div className="icon-wrapper">{feature.icon}</div>
+                <div className="why-card-top"><div className="icon-wrapper">{feature.icon}</div><span>0{feature.id}</span></div>
 
                 <div className="card-title">{feature.title}</div>
 
                 {/* ✅ REAL SUMMARY */}
                 <p className="card-summary">{feature.summary}</p>
-              </div>
+                <button className="why-details-button" onClick={() => setActiveFeature(feature)}>Explore strength <ArrowUpRight size={16} /></button>
+              </article>
             ))}
           </div>
         </div>
+
+        <section className="why-principles">
+          <div className="principles-copy">
+            <p className="section-label">Why hire me</p>
+            <h2>Hire for outcomes,<br />not just hours.</h2>
+            <p>Every engagement is judged by one question: does this reduce risk, speed up delivery, and leave behind a system the team can actually maintain?</p>
+          </div>
+          <div className="principles-list">
+            <div><Layers3 size={21} /><span><b>Proven across contexts</b><small>Enterprise discipline and startup speed, applied to the problem in front of me.</small></span></div>
+            <div><Database size={21} /><span><b>Ownership, not just output</b><small>I take responsibility for outcomes, not just the tickets assigned to me.</small></span></div>
+            <div><CheckCircle2 size={21} /><span><b>Built to be inherited</b><small>Clear, maintainable systems the next engineer can pick up without guesswork.</small></span></div>
+          </div>
+        </section>
 
         <a href="/skills" className="experience-button">
           Explore My Skills →
