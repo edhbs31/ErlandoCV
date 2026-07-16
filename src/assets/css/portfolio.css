@@ -29,8 +29,8 @@
 .portfolio-hero { padding-top: 4rem; padding-bottom: 3.5rem; text-align: center; }
 .portfolio-eyebrow { display: inline-flex; align-items: center; gap: 8px; color: #ffd700; font-size: .86rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
 .portfolio-kicker { color: rgba(255,255,255,.65); font-size: .85rem; margin: 1.5rem 0 .7rem; letter-spacing: .08em; }
-.portfolio-hero h1 { margin: 0; font-size: clamp(2.5rem, 6vw, 4.7rem); line-height: 1.08; font-weight: 700; text-shadow: 0 2px 6px rgba(0,0,0,.6); }
-.portfolio-hero h1 em { color: #ffd700; font-style: normal; }
+.portfolio-hero h1 { margin: 0; font-size: clamp(2.5rem, 6vw, 4.7rem); line-height: 1.08; font-weight: 700; background: linear-gradient(135deg, #fff 40%, #ffd700 120%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+.portfolio-hero h1 em { font-style: normal; }
 .portfolio-intro { max-width: 680px; margin: 1.5rem auto; line-height: 1.7; color: rgba(255,255,255,.85); font-size: 1.04rem; }
 .portfolio-stats { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin-top: 1.8rem; }
 .portfolio-stats span { padding: 8px 12px; border-radius: 999px; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12); color: rgba(255,255,255,.72); font-size: .82rem; }
@@ -55,7 +55,7 @@
 .portfolio-footer { display: flex; align-items: center; justify-content: space-between; gap: 20px; min-height: 125px; }.portfolio-footer span { font-size: 1.05rem; }.portfolio-footer a { display: flex; align-items: center; gap: 7px; color: #ffd700; text-decoration: none; font-weight: 700; }.portfolio-footer a:hover { color: white; }
 
 .case-study-overlay { position: fixed; z-index: 3000; inset: 0; overflow-y: auto; background: rgba(0,0,0,.78); backdrop-filter: blur(8px); }
-.case-study { position: relative; width: min(1160px, 100%); min-height: 100%; margin: 0 auto; background: #141414; box-shadow: 0 20px 80px rgba(0,0,0,.55); }
+.case-study { position: relative; width: min(1160px, 100%); min-height: 100%; margin: 0 auto; background: #141414; color: #ffffff; box-shadow: 0 20px 80px rgba(0,0,0,.55); }
 .modal-close { position: fixed; z-index: 2; top: 24px; right: max(24px, calc((100vw - 1100px) / 2)); display: grid; place-items: center; width: 42px; height: 42px; padding: 0; border: 1px solid rgba(255,255,255,.35); border-radius: 50%; color: white; background: rgba(0,0,0,.55); }.modal-close:hover { background: #ffd700; color: #111; border-color: #ffd700; }
 .case-study-hero { min-height: 390px; display: grid; grid-template-columns: 1.05fr .95fr; gap: 35px; align-items: center; padding: 72px 70px 54px; background: linear-gradient(125deg, rgba(0,0,0,.88), rgba(27,27,27,.76)), url('../background.JPG') center / cover; border-bottom: 1px solid rgba(255,255,255,.12); }.case-study-hero.violet { box-shadow: inset 0 -100px 100px rgba(86,59,153,.15); }.case-study-hero.gold { box-shadow: inset 0 -100px 100px rgba(183,128,35,.18); }.case-study-hero.cyan { box-shadow: inset 0 -100px 100px rgba(25,126,131,.18); }.case-study-hero.coral { box-shadow: inset 0 -100px 100px rgba(183,82,60,.17); }.case-study-hero.blue { box-shadow: inset 0 -100px 100px rgba(43,108,176,.2); }
 .modal-kind, .case-label { color: #ffd700; font-size: .78rem; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; }.case-study-hero h2 { max-width: 580px; margin: 10px 0 15px; color: #ffffff; font-size: clamp(2.8rem, 5.5vw, 4.8rem); line-height: 1; }.case-study-hero-content > p { max-width: 560px; color: rgba(255,255,255,.82); font-size: 1.05rem; line-height: 1.7; }.modal-stack { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; }.modal-stack span { padding: 6px 10px; border-radius: 5px; background: rgba(255,255,255,.1); color: rgba(255,255,255,.9); font-size: .8rem; }

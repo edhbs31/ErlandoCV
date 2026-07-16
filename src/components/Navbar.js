@@ -8,7 +8,7 @@ const mainLinks = [
   { path: "/offers", label: "Services" },
   { path: "/portfolio", label: "Portfolio" },
   { path: "/experience", label: "Experience" },
-  { path: "/about", label: "About" },
+  // { path: "/about", label: "About" },
 ];
 
 const moreLinks = [

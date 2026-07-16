@@ -118,7 +118,7 @@ const projects = [
       "A cloud-native commerce architecture built for independent scaling, fault isolation, and event-driven reliability.",
     description:
       "A Kubernetes-based architecture where each bounded context owns its data, communicates through events, and deploys independently without shared-database coupling.",
-    stack: ["Kubernetes", "Docker", "RabbitMQ / Kafka", "Redis", "PostgreSQL", "MongoDB", "Prometheus", "Grafana", "Jenkins"],
+    stack: ["Kubernetes", "Docker", "Kafka", "Redis", "PostgreSQL", "MongoDB", "Prometheus", "Grafana", "Jenkins"],
     result: "Independent deployment, fault isolation, and horizontal scalability",
     challenge: "A rapidly growing commerce platform required independent scaling across ordering, inventory, payments, and notifications without creating tightly coupled services or shared database dependencies.",
     solution: "Designed a Kubernetes-based microservice architecture where each bounded context owns its own database, communicates asynchronously through RabbitMQ, and exposes well-defined APIs through an API Gateway. This approach enables independent deployment, fault isolation, and horizontal scalability while maintaining data consistency through event-driven workflows.",
@@ -184,17 +184,11 @@ const Portfolio = () => {
 
         <section className="portfolio-hero">
           <div className="portfolio-eyebrow"><Code2 size={16} /> Selected work</div>
-          <p className="portfolio-kicker">BUILDING SYSTEMS THAT MOVE BUSINESS FORWARD</p>
           <h1>Complex systems,<br /><em>made useful.</em></h1>
           <p className="portfolio-intro">
             A selection of AI, distributed systems, and platform work designed
             around one idea: technology should make the next decision easier.
           </p>
-          <div className="portfolio-stats" aria-label="Portfolio focus areas">
-            <span><strong>AI</strong> automation</span>
-            <span><strong>01 → N</strong> scalable systems</span>
-            <span><strong>API-first</strong> by design</span>
-          </div>
         </section>
 
         <section className="portfolio-work" aria-labelledby="work-heading">
@@ -289,7 +283,7 @@ const Portfolio = () => {
                     <div className="micro-node blue-node">Load Balancer</div><i />
                     <div className="micro-node blue-node">API Gateway<br /><small>Auth · Rate Limit · API</small></div><i />
                     <div className="cluster-node"><b>Kubernetes Cluster</b><span>Production · Service Discovery · Self Healing</span><div className="service-grid">{["Order", "Payment", "Inventory", "Notification", "Catalog", "User"].map((service) => <div key={service}>{service}<small>Docker Pod</small></div>)}</div></div><i />
-                    <div className="event-node">RabbitMQ / Kafka<br /><small>Order Created · Payment Completed · Stock Updated</small></div><i />
+                    <div className="event-node">Kafka<br /><small>Order Created · Payment Completed · Stock Updated</small></div><i />
                     <div className="database-row"><span>PostgreSQL</span><span>PostgreSQL</span><span>MongoDB</span></div>
                     <div className="monitoring-row">Kubernetes · Docker · Prometheus · Grafana · Redis · CI/CD</div>
                   </div>
@@ -324,12 +318,13 @@ const Portfolio = () => {
               )}
               {selectedProject.businessImpact && (
                 <section className="business-impact">
-                  <div><p className="case-label">Business impact</p><h3>Automation built for<br />enterprise scale.</h3></div>
+                  <div><p className="case-label">Business impact</p><h3 style={{ color: "white" }}>Automation built for<br />enterprise scale.</h3></div>
                   <ul>{selectedProject.businessImpact.map((impact) => <li key={impact}><CheckCircle2 size={18} />{impact}</li>)}</ul>
                 </section>
               )}
               {selectedProject.lambdaFunctions && (
-                <section className="lambda-table">
+                <section className="lambda-table">Automation built for
+enterprise scale. make this section white color
                   <p className="case-label">Example AWS Lambda responsibilities</p>
                   <table>
                     <thead>

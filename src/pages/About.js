@@ -87,7 +87,7 @@ const AboutMe = () => {
 
               <div className="impact-grid" aria-label="Career highlights">
                 <div><b>5+ years</b><span>enterprise engineering</span></div>
-                <div><b>5,000+</b><span>daily B2B transactions</span></div>
+                <div><b>Digital Transformation</b><span>scalable microservices</span></div>
                 <div><b>AI + Cloud</b><span>automation systems</span></div>
               </div>
 
@@ -108,7 +108,7 @@ const AboutMe = () => {
               </div>
               <div className="about-actions">
                 <a href="/portfolio">View portfolio →</a>
-                <a href="mailto:erlandohbs@gmail.com">Contact me</a>
+                {/* <a href="mailto:erlandohbs@gmail.com">Contact me</a> */}
               </div>
             </div>
           </section>
