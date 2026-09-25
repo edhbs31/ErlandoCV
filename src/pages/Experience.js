@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 import "../assets/css/Experience.css";
 import Navbar from "../components/Navbar";
@@ -9,6 +9,7 @@ import Gramedia from "../assets/gramedia.png";
 import HMI from "../assets/hmi.png";
 import Freelance from "../assets/freelance.png";  
 import { ArrowUpRight, CalendarDays, X, Layers3, Database, CheckCircle2 } from "lucide-react";
+import { getContent } from "../services/api";
 
 const experiences = [
   {
@@ -91,6 +92,12 @@ const experiences = [
 
 const Experience = () => {
   const [activeIndex, setActiveIndex] = useState(null);
+  const [content, setContent] = useState(experiences);
+  useEffect(() => {
+    getContent("experiences").then((data) => {
+      if (Array.isArray(data)) setContent(data.map((item) => ({ ...item, logo: experiences.find((fallback) => fallback.company === item.company)?.logo || Freelance, details: item.details || [] })));
+    }).catch(() => {});
+  }, []);
 
   return (
     <div className="experience-page">
@@ -113,7 +120,7 @@ const Experience = () => {
           <p className="experience-intro">A selection of roles across enterprise systems, digital products, and AI-powered automation. Open a role to explore its delivery highlights.</p>
         </header>
       <div className="timeline">
-        {experiences.map((exp, index) => (
+        {content.map((exp, index) => (
           <article key={index} className="timeline-entry">
             <div className="timeline-dot" />
             <div className="timeline-line" />
@@ -159,7 +166,7 @@ const Experience = () => {
       </section>
 
       {/* MODAL */}
-      {activeIndex !== null && (
+      {activeIndex !== null && content[activeIndex] && (
         <div className="experience-popup-overlay" onClick={() => setActiveIndex(null)}>
           <div className="experience-popup-card" id={`experience-details-${activeIndex}`} role="dialog" aria-modal="true" aria-labelledby="experience-modal-title" onClick={(e) => e.stopPropagation()}>
             <button className="close-icon" aria-label="Close experience highlights" onClick={() => setActiveIndex(null)}>
@@ -168,15 +175,15 @@ const Experience = () => {
 
             <div className="popup-header">
               <img
-                src={experiences[activeIndex].logo}
-                alt={`${experiences[activeIndex].company} logo`}
+                src={content[activeIndex].logo}
+                alt={`${content[activeIndex].company} logo`}
                 className="popup-logo"
               />
               <div>
                 <p className="popup-eyebrow">Selected contribution</p>
-                <h2 id="experience-modal-title">{experiences[activeIndex].company}</h2>
-                <p>{experiences[activeIndex].role}</p>
-                <span>{experiences[activeIndex].year}</span>
+                <h2 id="experience-modal-title">{content[activeIndex].company}</h2>
+                <p>{content[activeIndex].role}</p>
+                <span>{content[activeIndex].year}</span>
               </div>
             </div>
 
@@ -184,7 +191,7 @@ const Experience = () => {
 
             <p className="popup-section-title">Delivery highlights</p>
             <ul className="popup-list">
-              {experiences[activeIndex].details.map((item, i) => (
+              {content[activeIndex].details.map((item, i) => (
                 <li
                   key={i}
                   className="popup-item"
@@ -199,8 +206,8 @@ const Experience = () => {
         </div>
       )}
 
-      <a href="/about" className="experience-button">
-        About Me →
+      <a href="/portfolio" className="experience-button">
+        Wanna See My Portfolio? →
       </a>
     </div>
   );

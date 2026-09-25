@@ -37,6 +37,7 @@
 .portfolio-stats strong { color: #ffd700; }
 
 .portfolio-work { padding-bottom: 4.5rem; }
+.portfolio-message { grid-column: 1 / -1; margin: 0; padding: 2rem; text-align: center; color: rgba(255,255,255,.72); border: 1px solid rgba(255,255,255,.12); border-radius: 14px; background: rgba(0,0,0,.2); }
 .portfolio-section-head { display: flex; align-items: end; justify-content: space-between; gap: 20px; margin-bottom: 1.6rem; }
 .section-label { margin: 0 0 .45rem; color: #ffd700; font-size: .82rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; }
 .portfolio-section-head h2, .principles-copy h2 { margin: 0; font-size: 2.2rem; }
@@ -53,6 +54,7 @@
 
 .portfolio-principles { max-width: none; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; padding-top: 4rem; padding-bottom: 4rem; background: rgba(0,0,0,.42); border-top: 1px solid rgba(255,255,255,.1); border-bottom: 1px solid rgba(255,255,255,.1); }.principles-copy { max-width: 440px; justify-self: end; }.principles-copy > p:last-child { color: rgba(255,255,255,.78); line-height: 1.7; }.principles-list { display: grid; align-content: center; gap: 16px; max-width: 500px; }.principles-list > div { display: flex; gap: 13px; align-items: flex-start; color: #ffd700; }.principles-list span { display: flex; flex-direction: column; gap: 4px; }.principles-list b { color: white; font-size: .95rem; }.principles-list small { color: rgba(255,255,255,.7); font-size: .83rem; }
 .portfolio-footer { display: flex; align-items: center; justify-content: space-between; gap: 20px; min-height: 125px; }.portfolio-footer span { font-size: 1.05rem; }.portfolio-footer a { display: flex; align-items: center; gap: 7px; color: #ffd700; text-decoration: none; font-weight: 700; }.portfolio-footer a:hover { color: white; }
+.portfolio-page .experience-button { position: fixed; z-index: 1000; right: 20px; bottom: 20px; padding: 12px 18px; border-radius: 999px; background: #ffd700; color: #151515; font-size: .88rem; font-weight: 700; text-decoration: none; box-shadow: 0 6px 20px rgba(255,215,0,.35); transition: transform .2s ease, box-shadow .2s ease; }.portfolio-page .experience-button:hover { transform: translateY(-3px); box-shadow: 0 10px 26px rgba(255,215,0,.45); }
 
 .case-study-overlay { position: fixed; z-index: 3000; inset: 0; overflow-y: auto; background: rgba(0,0,0,.78); backdrop-filter: blur(8px); }
 .case-study { position: relative; width: min(1160px, 100%); min-height: 100%; margin: 0 auto; background: #141414; color: #ffffff; box-shadow: 0 20px 80px rgba(0,0,0,.55); }

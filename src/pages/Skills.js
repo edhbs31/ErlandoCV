@@ -21,6 +21,7 @@ import { RiTokenSwapLine } from "react-icons/ri";
 import { SiSelenium, SiJest, SiCucumber } from "react-icons/si";
 import { TbBrandKotlin } from "react-icons/tb";
 import { Layers3, Database, CheckCircle2 } from "lucide-react";
+import { getContent } from "../services/api";
 
 const skillsData = [
   {
@@ -89,9 +90,18 @@ const skillsData = [
 const Skills = () => {
   const [activeCategory, setActiveCategory] = useState(null);
   const [loaded, setLoaded] = useState(false);
+  const [content, setContent] = useState(skillsData);
 
   useEffect(() => {
     setTimeout(() => setLoaded(true), 300);
+    getContent("skills").then((data) => {
+      if (!Array.isArray(data)) return;
+      setContent(data.map((section) => ({ ...section, skills: section.skills.map((skill) => {
+        const name = typeof skill === "string" ? skill : skill.name;
+        const fallback = skillsData.flatMap((item) => item.skills).find((item) => item.name === name);
+        return { name, icon: fallback?.icon || <FaDatabase /> };
+      }) })));
+    }).catch(() => {});
   }, []);
 
   return (
@@ -113,7 +123,7 @@ const Skills = () => {
           <p className="skills-subtitle">The tools I use to build reliable systems, automation, and cloud-native products.</p>
 
           <div className="skills-grid">
-            {skillsData.map((section, index) => (
+            {content.map((section, index) => (
               <div
                 key={index}
                 className={`skills-category ${
@@ -150,7 +160,7 @@ const Skills = () => {
                 <h3>{activeCategory}</h3>
 
                 <div className="skills-list">
-                  {skillsData
+                  {content
                     .find((s) => s.category === activeCategory)
                     .skills.map((skill, i) => (
                       <div

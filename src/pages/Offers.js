@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ArrowUpRight, CheckCircle2, Database, Layers3, X } from "lucide-react";
 import { Helmet } from "react-helmet";
 import "../assets/css/offers.css";
 import Navbar from "../components/Navbar";
 import backgroundImage from "../assets/background.JPG";
+import { getContent } from "../services/api";
 
 const offers = [
   {
@@ -81,6 +82,12 @@ const offers = [
 
 const Offers = () => {
   const [selectedOffer, setSelectedOffer] = useState(null);
+  const [content, setContent] = useState(offers);
+  useEffect(() => {
+    getContent("offers").then((data) => {
+      if (Array.isArray(data)) setContent(data);
+    }).catch(() => {});
+  }, []);
 
   return (
     <>
@@ -106,7 +113,7 @@ const Offers = () => {
           </p>
 
           <div className="offers-grid">
-            {offers.map((offer, index) => (
+            {content.map((offer, index) => (
               <article className="offer-card" key={index}>
                 <div className="offer-card-top"><div className="offer-icon">{offer.icon}</div><span>0{index + 1}</span></div>
                 <h2>{offer.title}</h2>
@@ -147,7 +154,7 @@ const Offers = () => {
             <div className="offer-modal-divider" />
             <h3>What I can deliver</h3>
             <ul>{selectedOffer.points.map((point) => <li key={point}><CheckCircle2 size={18} />{point}</li>)}</ul>
-            <a href="/contact" className="offer-modal-contact">Discuss your project <ArrowUpRight size={17} /></a>
+            <a href="/about" className="offer-modal-contact">Discuss your project <ArrowUpRight size={17} /></a>
           </section>
         </div>
       )}
