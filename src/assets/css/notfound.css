@@ -1,0 +1,9 @@
+.notfound-page { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 96px 20px 48px; box-sizing: border-box; text-align: center; color: var(--text); background: radial-gradient(circle at 50% 30%, var(--accent-soft), var(--bg) 65%); font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+.notfound-code { margin: 0; color: var(--accent); font-size: clamp(5rem, 22vw, 11rem); font-weight: 800; line-height: 1; letter-spacing: -.05em; }
+.notfound-page h1 { margin: 8px 0 12px; font-size: clamp(1.6rem, 4vw, 2.4rem); }
+.notfound-text { max-width: 440px; margin: 0 0 24px; color: var(--text-muted); line-height: 1.6; }
+.notfound-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin: 0 0 30px; padding: 0; list-style: none; }
+.notfound-links a { display: block; padding: 9px 16px; border: 1px solid var(--border-strong); border-radius: 999px; color: var(--text); text-decoration: none; }
+.notfound-links a:hover { color: var(--accent); border-color: var(--accent); background: color-mix(in srgb, var(--accent) 8%, transparent); transform: translateY(-2px); }
+.notfound-home { display: inline-flex; align-items: center; gap: 8px; padding: 12px 22px; border-radius: 999px; background: var(--accent-bg); color: var(--accent-contrast); font-weight: 700; text-decoration: none; }
+.notfound-home:hover { background: var(--text); color: var(--text-inverse); transform: translateY(-2px); }

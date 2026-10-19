@@ -1,7 +1,7 @@
+import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Helmet } from "react-helmet";
 import "../assets/css/skills.css";
-import Navbar from "../components/Navbar";
 import backgroundImage from "../assets/background.JPG";
 
 import {
@@ -22,6 +22,7 @@ import { SiSelenium, SiJest, SiCucumber } from "react-icons/si";
 import { TbBrandKotlin } from "react-icons/tb";
 import { Layers3, Database, CheckCircle2 } from "lucide-react";
 import { getContent } from "../services/api";
+import { useLang } from "../i18n/LanguageContext";
 
 const skillsData = [
   {
@@ -88,6 +89,7 @@ const skillsData = [
   },
 ];
 const Skills = () => {
+  const { t } = useLang();
   const [activeCategory, setActiveCategory] = useState(null);
   const [loaded, setLoaded] = useState(false);
   const [content, setContent] = useState(skillsData);
@@ -107,8 +109,8 @@ const Skills = () => {
   return (
     <>
       <Helmet>
-        <title>Skills | Erlando Dominico - Tech Stack & Expertise</title>
-        <meta name="description" content="Skills and tech stack Erlando Dominico: Java, Go, TypeScript, Python, AWS, Docker, Kubernetes, dan banyak lagi untuk solusi software engineering modern." />
+        <title>{t("Skills | Erlando Dominico - Tech Stack & Expertise")}</title>
+        <meta name="description" content={t("Skills and tech stack Erlando Dominico: Java, Go, TypeScript, Python, AWS, Docker, Kubernetes, dan banyak lagi untuk solusi software engineering modern.")} />
       </Helmet>
       <div className={`skills-page ${loaded ? "fade-in" : ""}`}>
         <div
@@ -116,11 +118,9 @@ const Skills = () => {
           style={{ backgroundImage: `url(${backgroundImage})` }}
         />
 
-        <Navbar />
-
         <div className="skills-container">
-          <h1 className="skills-title">Tech Stack</h1>
-          <p className="skills-subtitle">The tools I use to build reliable systems, automation, and cloud-native products.</p>
+          <h1 className="skills-title">{t("Tech Stack")}</h1>
+          <p className="skills-subtitle">{t("The tools I use to build reliable systems, automation, and cloud-native products.")}</p>
 
           <div className="skills-grid">
             {content.map((section, index) => (
@@ -135,7 +135,7 @@ const Skills = () => {
                   )
                 }
               >
-                <h2>{section.category}</h2>
+                <h2>{t(section.category)}</h2>
 
                 {/* Preview icons */}
                 <div className="preview-icons">
@@ -157,7 +157,7 @@ const Skills = () => {
                 className="skills-popup-card"
                 onClick={(e) => e.stopPropagation()}
               >
-                <h3>{activeCategory}</h3>
+                <h3>{t(activeCategory)}</h3>
 
                 <div className="skills-list">
                   {content
@@ -169,7 +169,7 @@ const Skills = () => {
                         style={{ animationDelay: `${i * 0.05}s` }}
                       >
                         <div className="icon">{skill.icon}</div>
-                        <p>{skill.name}</p>
+                        <p>{t(skill.name)}</p>
                       </div>
                     ))}
                 </div>
@@ -180,20 +180,20 @@ const Skills = () => {
 
         <section className="skills-principles">
           <div className="principles-copy">
-            <p className="section-label">How I build skills</p>
-            <h2>Depth over<br />buzzwords.</h2>
-            <p>Every tool above earns its place through real use — not a checklist. I go deep enough to know when it fits, and when it doesn't.</p>
+            <p className="section-label">{t("How I build skills")}</p>
+            <h2>{t("Depth over")}<br />{t("buzzwords.")}</h2>
+            <p>{t("Every tool above earns its place through real use — not a checklist. I go deep enough to know when it fits, and when it doesn't.")}</p>
           </div>
           <div className="principles-list">
-            <div><Layers3 size={21} /><span><b>Learned by shipping</b><small>Skills sharpened on production systems, not tutorials.</small></span></div>
-            <div><Database size={21} /><span><b>Right tool, right job</b><small>Chosen for the problem's constraints, not what's trendy.</small></span></div>
-            <div><CheckCircle2 size={21} /><span><b>Kept current</b><small>Continuously updated as tools, patterns, and demands evolve.</small></span></div>
+            <div><Layers3 size={21} /><span><b>{t("Learned by shipping")}</b><small>{t("Skills sharpened on production systems, not tutorials.")}</small></span></div>
+            <div><Database size={21} /><span><b>{t("Right tool, right job")}</b><small>{t("Chosen for the problem's constraints, not what's trendy.")}</small></span></div>
+            <div><CheckCircle2 size={21} /><span><b>{t("Kept current")}</b><small>{t("Continuously updated as tools, patterns, and demands evolve.")}</small></span></div>
           </div>
         </section>
 
-        <a href="/experience" className="experience-button">
-          View Experience →
-        </a>
+        <Link to="/experience" className="experience-button">
+          {t("View Experience →")}
+        </Link>
       </div>
     </>
   );

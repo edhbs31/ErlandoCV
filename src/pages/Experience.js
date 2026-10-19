@@ -1,7 +1,7 @@
+import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 import "../assets/css/Experience.css";
-import Navbar from "../components/Navbar";
 import backgroundImage from "../assets/background.JPG";
 
 import Mayora from "../assets/mayora.png";
@@ -10,6 +10,7 @@ import HMI from "../assets/hmi.png";
 import Freelance from "../assets/freelance.png";  
 import { ArrowUpRight, CalendarDays, X, Layers3, Database, CheckCircle2 } from "lucide-react";
 import { getContent } from "../services/api";
+import { useLang } from "../i18n/LanguageContext";
 
 const experiences = [
   {
@@ -91,6 +92,7 @@ const experiences = [
 ];
 
 const Experience = () => {
+  const { t } = useLang();
   const [activeIndex, setActiveIndex] = useState(null);
   const [content, setContent] = useState(experiences);
   useEffect(() => {
@@ -102,11 +104,9 @@ const Experience = () => {
   return (
     <div className="experience-page">
       <Helmet>
-        <title>Experience | Erlando Dominico - Software Engineer & IT Consultant</title>
-        <meta name="description" content=" Erlando Dominico's experience as  Software Engineer, IT Consultant, dan Digital Transformation Expert." />
+        <title>{t("Experience | Erlando Dominico - Software Engineer & IT Consultant")}</title>
+        <meta name="description" content={t(" Erlando Dominico's experience as  Software Engineer, IT Consultant, dan Digital Transformation Expert.")} />
       </Helmet>
-
-      <Navbar />
 
       <div
         className="experience-background"
@@ -115,9 +115,9 @@ const Experience = () => {
 
       <div className="experience-container">
         <header className="experience-heading">
-          <p>Career journey</p>
-          <h1>Experience that<br /><span>ships.</span></h1>
-          <p className="experience-intro">A selection of roles across enterprise systems, digital products, and AI-powered automation. Open a role to explore its delivery highlights.</p>
+          <p>{t("Career journey")}</p>
+          <h1>{t("Experience that")}<br /><span>{t("ships.")}</span></h1>
+          <p className="experience-intro">{t("A selection of roles across enterprise systems, digital products, and AI-powered automation. Open a role to explore its delivery highlights.")}</p>
         </header>
       <div className="timeline">
         {content.map((exp, index) => (
@@ -127,15 +127,15 @@ const Experience = () => {
             <span className="roadmap-step">{String(index + 1).padStart(2, "0")}</span>
 
             <div className="entry-content">
-              <img src={exp.logo} alt="logo" className="company-logo" />
+              <img src={exp.logo} alt={t("logo")} className="company-logo" />
 
               <div className="entry-text">
                 <h3>{exp.company}</h3>
-                <p className="date"><CalendarDays size={14} /> {exp.year}</p>
-                <p className="role">{exp.role}</p>
+                <p className="date"><CalendarDays size={14} /> {t(exp.year)}</p>
+                <p className="role">{t(exp.role)}</p>
 
                 {/* 🔥 KEY CHANGE */}
-                <p className="summary">{exp.summary}</p>
+                <p className="summary">{t(exp.summary)}</p>
 
                 <button
                   onClick={() =>
@@ -144,7 +144,7 @@ const Experience = () => {
                   aria-expanded={activeIndex === index}
                   aria-controls={`experience-details-${index}`}
                 >
-                  {activeIndex === index ? "Close highlights" : "View highlights"} <ArrowUpRight size={16} />
+                  {activeIndex === index ? t("Close highlights") : t("View highlights")} <ArrowUpRight size={16} />
                 </button>
               </div>
             </div>
@@ -154,14 +154,14 @@ const Experience = () => {
 
       <section className="experience-principles">
         <div className="principles-copy">
-          <p className="section-label">What experience taught me</p>
-          <h2>Range that<br />reduces risk.</h2>
-          <p>Enterprise, startup, and freelance work each expose different failure modes — that range is what lets me spot risk earlier and ship with fewer surprises.</p>
+          <p className="section-label">{t("What experience taught me")}</p>
+          <h2>{t("Range that")}<br />{t("reduces risk.")}</h2>
+          <p>{t("Enterprise, startup, and freelance work each expose different failure modes — that range is what lets me spot risk earlier and ship with fewer surprises.")}</p>
         </div>
         <div className="principles-list">
-          <div><Layers3 size={21} /><span><b>Adapts to the environment</b><small>Structured enterprise process one year, fast-moving startup delivery the next.</small></span></div>
-          <div><Database size={21} /><span><b>Handles the full lifecycle</b><small>From legacy SAP systems to greenfield microservices and AI automation.</small></span></div>
-          <div><CheckCircle2 size={21} /><span><b>Delivers under real constraints</b><small>Track record of shipping at scale, not just in theory.</small></span></div>
+          <div><Layers3 size={21} /><span><b>{t("Adapts to the environment")}</b><small>{t("Structured enterprise process one year, fast-moving startup delivery the next.")}</small></span></div>
+          <div><Database size={21} /><span><b>{t("Handles the full lifecycle")}</b><small>{t("From legacy SAP systems to greenfield microservices and AI automation.")}</small></span></div>
+          <div><CheckCircle2 size={21} /><span><b>{t("Delivers under real constraints")}</b><small>{t("Track record of shipping at scale, not just in theory.")}</small></span></div>
         </div>
       </section>
 
@@ -169,27 +169,27 @@ const Experience = () => {
       {activeIndex !== null && content[activeIndex] && (
         <div className="experience-popup-overlay" onClick={() => setActiveIndex(null)}>
           <div className="experience-popup-card" id={`experience-details-${activeIndex}`} role="dialog" aria-modal="true" aria-labelledby="experience-modal-title" onClick={(e) => e.stopPropagation()}>
-            <button className="close-icon" aria-label="Close experience highlights" onClick={() => setActiveIndex(null)}>
+            <button className="close-icon" aria-label={t("Close experience highlights")} onClick={() => setActiveIndex(null)}>
               <X size={20} />
             </button>
 
             <div className="popup-header">
               <img
                 src={content[activeIndex].logo}
-                alt={`${content[activeIndex].company} logo`}
+                alt={`${content[activeIndex].company} ${t("logo")}`}
                 className="popup-logo"
               />
               <div>
-                <p className="popup-eyebrow">Selected contribution</p>
+                <p className="popup-eyebrow">{t("Selected contribution")}</p>
                 <h2 id="experience-modal-title">{content[activeIndex].company}</h2>
-                <p>{content[activeIndex].role}</p>
-                <span>{content[activeIndex].year}</span>
+                <p>{t(content[activeIndex].role)}</p>
+                <span>{t(content[activeIndex].year)}</span>
               </div>
             </div>
 
             <div className="popup-divider" />
 
-            <p className="popup-section-title">Delivery highlights</p>
+            <p className="popup-section-title">{t("Delivery highlights")}</p>
             <ul className="popup-list">
               {content[activeIndex].details.map((item, i) => (
                 <li
@@ -197,18 +197,18 @@ const Experience = () => {
                   className="popup-item"
                   style={{ animationDelay: `${i * 0.05}s` }}
                 >
-                  {item}
+                  {t(item)}
                 </li>
               ))}
             </ul>
-            <button className="popup-close-button" onClick={() => setActiveIndex(null)}>Close</button>
+            <button className="popup-close-button" onClick={() => setActiveIndex(null)}>{t("Close")}</button>
           </div>
         </div>
       )}
 
-      <a href="/portfolio" className="experience-button">
-        Wanna See My Portfolio? →
-      </a>
+      <Link to="/portfolio" className="experience-button">
+        {t("Wanna See My Portfolio? →")}
+      </Link>
     </div>
   );
 };

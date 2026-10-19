@@ -1,10 +1,11 @@
+import { Link } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import { ArrowUpRight, CheckCircle2, Database, Layers3, X } from "lucide-react";
 import { Helmet } from "react-helmet";
 import "../assets/css/offers.css";
-import Navbar from "../components/Navbar";
 import backgroundImage from "../assets/background.JPG";
 import { getContent } from "../services/api";
+import { useLang } from "../i18n/LanguageContext";
 
 const offers = [
   {
@@ -81,6 +82,7 @@ const offers = [
 ];
 
 const Offers = () => {
+  const { t } = useLang();
   const [selectedOffer, setSelectedOffer] = useState(null);
   const [content, setContent] = useState(offers);
   useEffect(() => {
@@ -92,11 +94,10 @@ const Offers = () => {
   return (
     <>
       <Helmet>
-        <title>Offers | Erlando Dominico - Scalable Systems & Automation Solutions</title>
-        <meta name="description" content="Erlando Dominico Offers: scalable systems, automation, digital transformation, cloud, DevOps, dan solusi backend untuk bisnis modern." />
+        <title>{t("Offers | Erlando Dominico - Scalable Systems & Automation Solutions")}</title>
+        <meta name="description" content={t("Erlando Dominico Offers: scalable systems, automation, digital transformation, cloud, DevOps, dan solusi backend untuk bisnis modern.")} />
       </Helmet>
       <div className="offers-page">
-        <Navbar />
 
         <div
           className="offers-background"
@@ -104,22 +105,21 @@ const Offers = () => {
         />
 
         <div className="offers-container">
-          <p className="offers-eyebrow">Capabilities</p>
-          <h1 className="offers-title">What I Offer</h1>
+          <p className="offers-eyebrow">{t("Capabilities")}</p>
+          <h1 className="offers-title">{t("What I Offer")}</h1>
 
           <p className="offers-subtitle">
-            Engineering scalable systems, automation platforms, and digital
-            solutions that improve operational efficiency and business execution.
+            {t("Engineering scalable systems, automation platforms, and digital solutions that improve operational efficiency and business execution.")}
           </p>
 
           <div className="offers-grid">
             {content.map((offer, index) => (
               <article className="offer-card" key={index}>
                 <div className="offer-card-top"><div className="offer-icon">{offer.icon}</div><span>0{index + 1}</span></div>
-                <h2>{offer.title}</h2>
-                <p className="offer-description">{offer.description}</p>
+                <h2>{t(offer.title)}</h2>
+                <p className="offer-description">{t(offer.description)}</p>
                 <button className="offer-details-button" onClick={() => setSelectedOffer(offer)}>
-                  Explore service <ArrowUpRight size={16} />
+                  {t("Explore service")} <ArrowUpRight size={16} />
                 </button>
               </article>
             ))}
@@ -128,33 +128,33 @@ const Offers = () => {
 
         <section className="offers-principles">
           <div className="principles-copy">
-            <p className="section-label">How I deliver</p>
-            <h2>Services built<br />around outcomes.</h2>
-            <p>Every service above is delivered the same way: understand the real problem first, then build the smallest thing that solves it well.</p>
+            <p className="section-label">{t("How I deliver")}</p>
+            <h2>{t("Services built")}<br />{t("around outcomes.")}</h2>
+            <p>{t("Every service above is delivered the same way: understand the real problem first, then build the smallest thing that solves it well.")}</p>
           </div>
           <div className="principles-list">
-            <div><Layers3 size={21} /><span><b>Scoped to the problem</b><small>No over-engineering — just the architecture the problem actually needs.</small></span></div>
-            <div><Database size={21} /><span><b>Reliable by default</b><small>Observable flows and dependable source-of-truth systems in every build.</small></span></div>
-            <div><CheckCircle2 size={21} /><span><b>Handover-ready</b><small>Documented, maintainable delivery your team can run without me.</small></span></div>
+            <div><Layers3 size={21} /><span><b>{t("Scoped to the problem")}</b><small>{t("No over-engineering — just the architecture the problem actually needs.")}</small></span></div>
+            <div><Database size={21} /><span><b>{t("Reliable by default")}</b><small>{t("Observable flows and dependable source-of-truth systems in every build.")}</small></span></div>
+            <div><CheckCircle2 size={21} /><span><b>{t("Handover-ready")}</b><small>{t("Documented, maintainable delivery your team can run without me.")}</small></span></div>
           </div>
         </section>
 
-        <a href="/why" className="experience-button">
-          Why Work With Me →
-        </a>
+        <Link to="/why" className="experience-button">
+          {t("Why Work With Me →")}
+        </Link>
       </div>
       {selectedOffer && (
         <div className="offer-modal-overlay" onClick={() => setSelectedOffer(null)}>
           <section className="offer-modal" role="dialog" aria-modal="true" aria-labelledby="offer-modal-title" onClick={(event) => event.stopPropagation()}>
-            <button className="offer-modal-close" aria-label="Close service details" onClick={() => setSelectedOffer(null)}><X size={20} /></button>
+            <button className="offer-modal-close" aria-label={t("Close service details")} onClick={() => setSelectedOffer(null)}><X size={20} /></button>
             <div className="offer-modal-icon">{selectedOffer.icon}</div>
-            <p>Service overview</p>
-            <h2 id="offer-modal-title">{selectedOffer.title}</h2>
-            <p className="offer-modal-description">{selectedOffer.description}</p>
+            <p>{t("Service overview")}</p>
+            <h2 id="offer-modal-title">{t(selectedOffer.title)}</h2>
+            <p className="offer-modal-description">{t(selectedOffer.description)}</p>
             <div className="offer-modal-divider" />
-            <h3>What I can deliver</h3>
-            <ul>{selectedOffer.points.map((point) => <li key={point}><CheckCircle2 size={18} />{point}</li>)}</ul>
-            <a href="/about" className="offer-modal-contact">Discuss your project <ArrowUpRight size={17} /></a>
+            <h3>{t("What I can deliver")}</h3>
+            <ul>{selectedOffer.points.map((point) => <li key={point}><CheckCircle2 size={18} />{t(point)}</li>)}</ul>
+            <Link to="/about" className="offer-modal-contact">{t("Discuss your project")} <ArrowUpRight size={17} /></Link>
           </section>
         </div>
       )}

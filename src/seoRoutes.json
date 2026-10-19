@@ -1,0 +1,14 @@
+{
+  "siteUrl": "https://erlandohbs.com",
+  "siteName": "Erlando Dominico",
+  "image": "https://erlandohbs.com/preview.png",
+  "routes": [
+    { "path": "/", "aliases": ["/home"], "priority": "1.0", "title": "Erlando Dominico | Backend Software Engineer & AI Automation", "description": "Backend Software Engineer with 6+ years building scalable microservices, AI document automation, and enterprise platforms in healthcare, finance, and e-commerce." },
+    { "path": "/offers", "aliases": ["/services"], "priority": "0.9", "title": "Services | Backend, AI Automation & Cloud Engineering | Erlando Dominico", "description": "Backend & microservices engineering, AI document automation, digital transformation, cloud & DevOps, and MVP development for companies and vendors." },
+    { "path": "/portfolio", "aliases": [], "priority": "0.9", "title": "Portfolio | Selected Projects | Erlando Dominico", "description": "Selected AI automation, microservices, cloud platform, and enterprise finance projects with challenge, solution, and result for each." },
+    { "path": "/experience", "aliases": [], "priority": "0.8", "title": "Experience | HMI, Gramedia, Mayora | Erlando Dominico", "description": "Career timeline across HMI Group, Gramedia Digital, PT Mayora Indah Tbk, and freelance AI & OCR engineering." },
+    { "path": "/why", "aliases": [], "priority": "0.7", "title": "Why Hire Erlando Dominico | Software Engineer & IT Consultant", "description": "How I work with teams and vendors: understand the need, design the solution, build and deliver, deploy and scale." },
+    { "path": "/skills", "aliases": [], "priority": "0.7", "title": "Skills | Go, Node.js, Kubernetes, AI | Erlando Dominico", "description": "Technical skills across backend engineering, architecture, cloud platforms, data platforms, and AI automation." },
+    { "path": "/about", "aliases": ["/contact"], "priority": "0.7", "title": "About & Contact | Erlando Dominico", "description": "Background, education, and ways to get in touch: email, WhatsApp, LinkedIn, and GitHub." }
+  ]
+}

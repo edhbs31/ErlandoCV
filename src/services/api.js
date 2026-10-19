@@ -1,7 +1,11 @@
-const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:4000';
+// Only call the CMS API when it is configured; otherwise pages use their built-in content
+// (avoids visitors' browsers requesting http://localhost:4000).
+const API_URL = process.env.REACT_APP_API_URL || (process.env.NODE_ENV === 'production' ? '' : 'http://localhost:4000');
+const assertApi = () => { if (!API_URL) throw new Error('CMS API is not configured'); };
 
 /** Mengambil data CV yang tersimpan di MySQL melalui backend. */
 export async function getContent(key) {
+  assertApi();
   const response = await fetch(`${API_URL}/api/content/${key}`);
   if (!response.ok) throw new Error(`Gagal mengambil konten ${key}`);
   const result = await response.json();
@@ -10,6 +14,7 @@ export async function getContent(key) {
 
 /** Mengambil daftar portfolio dari tabel portfolio_projects. */
 export async function getPortfolioProjects() {
+  assertApi();
   const response = await fetch(`${API_URL}/api/portfolio`);
   if (!response.ok) throw new Error('Gagal mengambil portfolio');
   const result = await response.json();

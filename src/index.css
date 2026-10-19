@@ -14,3 +14,64 @@ code {
 
 
 
+
+/* Modern interaction animations */
+html { scroll-behavior: smooth; }
+a, button { transition: transform .22s cubic-bezier(.22,1,.36,1), box-shadow .22s ease, background-color .22s ease, color .22s ease, border-color .22s ease, opacity .22s ease; }
+a:active, button:active { transform: scale(.95); }
+.experience-button:hover, .navbar-contact:hover, .why-cta-primary:hover, .why-scroll-btn:hover, .offer-modal-contact:hover { transform: translateY(-3px); box-shadow: 0 10px 24px rgba(0,0,0,.35); }
+.navbar-links a:hover, .navbar-more button:hover { transform: translateY(-1px); }
+.more-menu.open { animation: menuIn .22s cubic-bezier(.22,1,.36,1); }
+.navbar-menu.active { animation: menuIn .25s cubic-bezier(.22,1,.36,1); }
+@keyframes menuIn { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; scroll-behavior: auto !important; } }
+
+/* Scroll reveal for cards and headings */
+.reveal { opacity: 0; }
+.reveal.reveal-in { opacity: 1; animation: revealUp .7s cubic-bezier(.22,1,.36,1) var(--reveal-delay, 0ms) backwards; }
+@keyframes revealUp { from { opacity: 0; transform: translateY(28px) scale(.98); } to { opacity: 1; transform: none; } }
+.vendor-card, .why-card, .skill-card, .offer-card, .project-card, .card { transition: transform .3s cubic-bezier(.22,1,.36,1), box-shadow .3s ease, border-color .3s ease; }
+.vendor-card:hover, .why-card:hover, .skill-card:hover, .offer-card:hover, .project-card:hover, .card:hover { transform: translateY(-6px); box-shadow: 0 16px 36px rgba(0,0,0,.4); }
+
+/* ===== Theme tokens (dark is the default; light overrides below) ===== */
+:root, :root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #09090a;
+  --bg-elevated: #191919;
+  --surface: rgba(255, 255, 255, .05);
+  --surface-strong: rgba(255, 255, 255, .1);
+  --border: rgba(255, 255, 255, .12);
+  --border-strong: rgba(255, 255, 255, .25);
+  --text: #ffffff;
+  --text-muted: rgba(255, 255, 255, .72);
+  --text-faint: rgba(255, 255, 255, .5);
+  --accent: #ffd700;           /* gold used as text / border / icon colour */
+  --accent-bg: #ffd700;        /* gold used as a filled background */
+  --accent-contrast: #151515;  /* text on top of --accent-bg */
+  --accent-soft: rgba(255, 215, 0, .08);
+  --nav-bg: rgba(9, 9, 10, .88);
+  --shadow: rgba(0, 0, 0, .4);
+  --bg-photo-filter: blur(6px) brightness(.38);
+  --text-inverse: #151515;     /* text on a --text-coloured fill (hover buttons) */
+}
+:root[data-theme="light"] {
+  color-scheme: light;
+  --bg: #f7f6f2;
+  --bg-elevated: #ffffff;
+  --surface: rgba(255, 255, 255, .72);
+  --surface-strong: rgba(0, 0, 0, .06);
+  --border: rgba(20, 20, 24, .12);
+  --border-strong: rgba(20, 20, 24, .28);
+  --text: #17181a;
+  --text-muted: rgba(23, 24, 26, .74);
+  --text-faint: rgba(23, 24, 26, .52);
+  --accent: #8a6500;
+  --accent-bg: #ffd700;
+  --accent-contrast: #151515;
+  --accent-soft: rgba(138, 101, 0, .1);
+  --nav-bg: rgba(247, 246, 242, .88);
+  --shadow: rgba(20, 20, 24, .14);
+  --bg-photo-filter: blur(8px) brightness(1.5) saturate(.4) opacity(.09);
+  --text-inverse: #ffffff;
+}
+body { background: var(--bg); color: var(--text); transition: background-color .3s ease, color .3s ease; }
